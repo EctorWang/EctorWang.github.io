@@ -2,5 +2,6 @@
     "title":"Ector Wang's Blog",
     "subTitle":"Personal learning records",
     "avatarUrl":"https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png",
-    "GMEEK_VERSION":"last"
+    "GMEEK_VERSION":"last",
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>"
 }
