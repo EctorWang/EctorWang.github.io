@@ -10,6 +10,8 @@
 
 > 这篇文章关于自我学习的很好的一篇方法论文章，可以指导平时的学习
 
+[原文链接](https://www.nateliason.com/blog/self-education)
+
 ```
 https://www.nateliason.com/blog/self-education
 ```
