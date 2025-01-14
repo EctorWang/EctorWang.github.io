@@ -1,11 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Tue, 14 Jan 2025 12:03:26 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>Book-Deep Learning and Computational Physics</title><link>https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html</link><description>## Deep Learning and Computational Physics&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Tue, 14 Jan 2025 12:07:53 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>Book-Deep Learning and Computational Physics</title><link>https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html</link><description># Deep Learning and Computational Physics&#13;
 &#13;
 &gt; 这是一篇讨论PINNs相关的文章&#13;
 &gt; 里面有很多的干货和视频链接和教学视频，是值得深入学习的书籍&#13;
 &#13;
 [Cover](https://github.com/EctorWang/EctorWang.github.io/blob/main/static/Deep%20Learning%20and%20Computational%20Physics.jpg)&#13;
 &#13;
+&#13;
+## 第一章：&#13;
+`内容详细讲解链接`&#13;
+&#13;
+## 第二章：&#13;
+`内容详细讲解链接`&#13;
+&#13;
+## 第三章：&#13;
+`内容详细讲解链接`&#13;
+&#13;
+## 第四章：&#13;
+`内容详细讲解链接`&#13;
 。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html</guid><pubDate>Tue, 14 Jan 2025 12:03:02 +0000</pubDate></item><item><title>Jotting</title><link>https://EctorWang.github.io/post/Jotting.html</link><description># 凡事慢下来，才有时间思考，也是最快的方法&#13;
 &#13;
 &#13;
