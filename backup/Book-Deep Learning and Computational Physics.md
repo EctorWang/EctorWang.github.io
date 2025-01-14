@@ -8,6 +8,8 @@
 
 ## 第一章：
 `内容详细讲解链接`
+[内容详细介绍页面](https://ectorwang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics%20Paper%20reading-Chapter%20One.html)
+
 
 ## 第二章：
 `内容详细讲解链接`
