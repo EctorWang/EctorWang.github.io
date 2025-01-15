@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Wed, 15 Jan 2025 14:56:08 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>Chapter 2_Dive into deep learning_Pytorch</title><link>https://EctorWang.github.io/post/Chapter%202_Dive%20into%20deep%20learning_Pytorch.html</link><description>## 第二章：预备知识&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Wed, 15 Jan 2025 15:04:55 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>Chapter 2_Dive into deep learning_Pytorch</title><link>https://EctorWang.github.io/post/Chapter%202_Dive%20into%20deep%20learning_Pytorch.html</link><description>## 第二章：预备知识&#13;
 &#13;
 [本章内容链接](https://zh-v2.d2l.ai/chapter_preliminaries/index.html)&#13;
 &#13;
@@ -48,9 +48,17 @@ D:\Software_file\Machine_Learning\Pytorch\limu_B_Up\Jupyter_Notebook&#13;
 - 参考书&#13;
 陆明万、罗学富，《弹性理论基础》，清华大学出版社，2001&#13;
 &#13;
+- 电子版参考书链接&#13;
+```python&#13;
+https://www.alipan.com/s/XAVUBNocw88&#13;
+提取码: 6av4&#13;
+```&#13;
+&#13;
 - 学习视频链接&#13;
 [B站-清华-冯西桥教授课程](https://www.bilibili.com/video/BV17U2qYZEHK/?spm_id_from=333.337.search-card.all.click&amp;vd_source=788a24777ab3b737c94b9a53fc3bd355)&#13;
 &#13;
+- 笔记链接&#13;
+[弹性理论基础 Github 链接]()&#13;
 。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Daily%20study.html</guid><pubDate>Wed, 15 Jan 2025 13:36:29 +0000</pubDate></item><item><title>Book-Deep Learning and Computational Physics Paper reading-Chapter One</title><link>https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics%20Paper%20reading-Chapter%20One.html</link><description>## concent&#13;
 &#13;
 pages concent。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics%20Paper%20reading-Chapter%20One.html</guid><pubDate>Tue, 14 Jan 2025 12:10:28 +0000</pubDate></item><item><title>Book-Deep Learning and Computational Physics</title><link>https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html</link><description># Deep Learning and Computational Physics&#13;
