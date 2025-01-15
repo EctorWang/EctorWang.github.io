@@ -17,3 +17,7 @@
 [弹性力学学习流程介绍页面](https://ectorwang.github.io/post/Elastic%20mechanics.html)
 
 `上面所有的内容保存在本地的Markdown文件中，根据需要将需要展示的上传到github`
+
+
+### ChatGPT 使用和学习
+[ChatGPT使用和学习](https://ectorwang.github.io/post/ChatGPT-xue-xi-he-shi-yong.html)
