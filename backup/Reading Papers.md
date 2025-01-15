@@ -1,11 +1,12 @@
 ## 如何阅读论文
 
 ### 查找论文
-
+web of science
+Aminer
 
 
 ### 如何下载论文
-
+Github
 
 ### 如何阅读论文
 
