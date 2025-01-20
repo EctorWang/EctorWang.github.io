@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Sat, 18 Jan 2025 15:37:29 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>test3</title><link>https://EctorWang.github.io/post/test3.html</link><description>test3&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Mon, 20 Jan 2025 13:56:23 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>test3</title><link>https://EctorWang.github.io/post/test3.html</link><description>test3&#13;
 test。</description><guid isPermaLink="true">https://EctorWang.github.io/post/test3.html</guid><pubDate>Wed, 15 Jan 2025 15:54:09 +0000</pubDate></item><item><title>PINNs 相关学习资料</title><link>https://EctorWang.github.io/post/PINNs%20-xiang-guan-xue-xi-zi-liao.html</link><description>## PINNs 相关的资源
 
 [上海交大的PINNs短课程](https://www.bilibili.com/video/BV1LecbeTE28?buvid=XX9D8249140DDF569DF9530C7338CABA0EBA8&amp;from_spmid=tm.recommend.0.0&amp;is_story_h5=false&amp;mid=jfgIkZdzEotjoZsYRuNa6Q%3D%3D&amp;plat_id=116&amp;share_from=ugc&amp;share_medium=android&amp;share_plat=android&amp;share_session_id=8d5ba97e-1b56-4d84-9a7d-d623bf12702f&amp;share_source=WEIXIN&amp;share_tag=s_i&amp;spmid=united.player-video-detail.0.0&amp;timestamp=1737196696&amp;unique_k=1mv5Mx5&amp;up_id=1611103035&amp;vd_source=788a24777ab3b737c94b9a53fc3bd355&amp;spm_id_from=333.788.videopod.episodes&amp;p=5)
@@ -184,13 +184,13 @@ pages concent。</description><guid isPermaLink="true">https://EctorWang.github.
 4.  2025年国家建设高水平大学公派研究生项目指南&#13;
 &#13;
 &#13;
-5.  2025年国家留学基金资助出国留学人员选派指南。</description><guid isPermaLink="true">https://EctorWang.github.io/post/guo-jia-liu-xue-ji-jin-wei-%20%E2%80%94%20-gong-pai-liu-xue-xiang-mu.html</guid><pubDate>Sat, 11 Jan 2025 13:13:36 +0000</pubDate></item><item><title>Markdown 编辑模板</title><link>https://EctorWang.github.io/post/Markdown%20-bian-ji-mo-ban.html</link><description># 在线 MarkDown 编辑器&#13;
-&#13;
-[整体文章来源](https://github.com/EctorWang/EctorWang.github.io/issues/new)&#13;
-&#13;
-&#13;
-![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)&#13;
-&#13;
+5.  2025年国家留学基金资助出国留学人员选派指南。</description><guid isPermaLink="true">https://EctorWang.github.io/post/guo-jia-liu-xue-ji-jin-wei-%20%E2%80%94%20-gong-pai-liu-xue-xiang-mu.html</guid><pubDate>Sat, 11 Jan 2025 13:13:36 +0000</pubDate></item><item><title>Markdown 编辑模板</title><link>https://EctorWang.github.io/post/Markdown%20-bian-ji-mo-ban.html</link><description># 在线 MarkDown 编辑器
+
+[整体文章来源](https://github.com/EctorWang/EctorWang.github.io/issues/new)
+
+
+![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
+
 Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Markdown%20-bian-ji-mo-ban.html</guid><pubDate>Fri, 10 Jan 2025 13:56:54 +0000</pubDate></item><item><title>Self-Education: Teach Yourself Anything with the Sandbox Method</title><link>https://EctorWang.github.io/post/Self-Education-%20Teach%20Yourself%20Anything%20with%20the%20Sandbox%20Method.html</link><description>这篇文章探讨了自我教育的重要性和方法，强调在当今信息丰富的时代，个人可以通过自主学习掌握新技能，而不必依赖传统教育。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Self-Education-%20Teach%20Yourself%20Anything%20with%20the%20Sandbox%20Method.html</guid><pubDate>Fri, 10 Jan 2025 05:12:10 +0000</pubDate></item><item><title>SEU 第17周周报</title><link>https://EctorWang.github.io/post/SEU%20-di-17-zhou-zhou-bao.html</link><description>## 文献阅读&#13;
 **Physics-informed machine learning**&#13;
 一篇综述性的论文&#13;
