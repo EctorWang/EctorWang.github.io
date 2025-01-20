@@ -26,4 +26,5 @@
 [PINNs相关代码的复现](https://www.bilibili.com/video/BV1KbcAeyEaQ/?buvid=XX9D8249140DDF569DF9530C7338CABA0EBA8&from_spmid=tm.recommend.0.0&is_story_h5=false&mid=jfgIkZdzEotjoZsYRuNa6Q%3D%3D&plat_id=116&share_from=ugc&share_medium=android&share_plat=android&share_session_id=b23ccf6f-1e41-408c-89c8-8e4705e90086&share_source=WEIXIN&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1737196668&unique_k=1JAPnwU&up_id=358594193&vd_source=788a24777ab3b737c94b9a53fc3bd355)
 
 
-
+- 关于PINNs的书籍资料
+https://ectorwang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html
