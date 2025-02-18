@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# PINNpapers
+
+Contributed by [IDRL lab](https://github.com/idrl-lab).
+
+- [PINNpapers](#pinnpapers)
+  - [Introduction](#introduction)
+  - [Software](#software)
+  - [Papers on PINN Models](#papers-on-pinn-models)
+  - [Papers on Parallel PINN](#papers-on-parallel-pinn)
+  - [Papers on PINN Accerleration](#papers-on-pinn-accerleration)
+  - [Papers on Model Transfer & Meta-Learning](#papers-on-model-transfer--meta-learning)
+  - [Papers on Probabilistic PINNs and Uncertainty Quantification](#papers-on-probabilistic-pinns-and-uncertainty-quantification)
+  - [Papers on Applications](#papers-on-applications)
+  - [Papers on PINN Analysis](#papers-on-pinn-analysis)
+
+## Introduction
+
+Physics-Informed Neural Network (PINN) has achieved great success in scientific computing since 2017. In this repo, we list some representative work on PINNs. Feel free to distribute or use it!
+
+Corrections and suggestions are welcomed.
+
+A [script](./ref_convert.py) for converting bibtex to the markdown used in this repo is also provided for your convenience.
+
+## Software
+
+
+
+
+1. **DeepXDE: A Deep Learning Library for Solving Differential Equations**, *Lu Lu, Xuhui Meng, Zhiping Mao, George Em Karniadakis*, SIAM Review, 2021. [[paper](https://epubs.siam.org/doi/pdf/10.1137/19M1274067)][[code](https://github.com/lululxvi/deepxde)]
+2. **NVIDIA SimNet™: An AI-Accelerated Multi-Physics Simulation Framework**, *Oliver Hennigh, Susheela Narasimhan, Mohammad Amin Nabian, Akshay Subramaniam, Kaustubh Tangsali, Zhiwei Fang, Max Rietmann, Wonmin Byeon, Sanjay Choudhry*, **ICCS**, 2021. [[paper](https://link.springer.com/chapter/10.1007/978-3-030-77977-1_36)]
+3. **SciANN: A Keras wrapper for scientific computations and physics-informed deep learning using artificial neural networks**, *Ehsan Haghighat, Ruben Juanes*, arXiv preprint arXiv:2005.08803, 2020. [[paper](https://www.sciencedirect.com/science/article/pii/S0045782520307374)][[code](https://github.com/sciann/sciann)]
+4. **Elvet -- a neural network-based differential equation and variational problem solver**, *Jack Y. Araz, Juan Carlos Criado, Michael Spannowsky*, arXiv:2103.14575 [hep-lat, physics:hep-ph, physics:hep-th, stat], 2021. [[paper](https://arxiv.org/pdf/2103.14575)][[code](https://gitlab.com/elvet/elvet)]
+5. **TensorDiffEq: Scalable Multi-GPU Forward and Inverse Solvers for Physics Informed Neural Networks**, *Levi D. McClenny, Mulugeta A. Haile, Ulisses M. Braga-Neto*, arXiv:2103.16034 [physics], 2021. [[paper](https://arxiv.org/pdf/2103.16034)][[code](https://github.com/tensordiffeq/TensorDiffEq)]
+6. **PyDEns: a Python Framework for Solving Differential Equations with Neural Networks**, *Alex Koryagin, er, Roman Khudorozkov, Sergey Tsimfer*, arXiv:1909.11544 [cs, stat], 2019. [[paper]()]
+7. **NeuroDiffEq: A Python package for solving differential equations with neural networks**, *Feiyu Chen, David Sondak, Pavlos Protopapas, Marios Mattheakis, Shuheng Liu, Devansh Agarwal, Marco Di Giovanni*, Journal of Open Source Software, 2020. [[paper](https://joss.theoj.org/papers/10.21105/joss.01931)][[code](https://github.com/analysiscenter/pydens)]
+8. **Universal Differential Equations for Scientific Machine Learning**, *Christopher Rackauckas, Yingbo Ma, Julius Martensen, Collin Warner, Kirill Zubov, Rohit Supekar, Dominic Skinner, Ali Ramadhan, Alan Edelman*, arXiv:2001.04385 [cs, math, q-bio, stat], 2020. [[paper](https://arxiv.org/pdf/2001.04385.pdf)][[code](https://github.com/ChrisRackauckas/universal_differential_equations)]
+9. **NeuralPDE: Automating Physics-Informed Neural Networks (PINNs) with Error Approximations**, *Kirill Zubov, Zoe McCarthy, Yingbo Ma, Francesco Calisto, Valerio Pagliarino, Simone Azeglio, Luca Bottero, Emmanuel Luján, Valentin Sulzer, Ashutosh Bharambe, N Vinchhi, , Kaushik Balakrishnan, Devesh Upadhyay, Chris Rackauckas*, arXiv:2107.09443 [cs], 2021. [[paper](https://arxiv.org/pdf/2107.09443)][[code](https://github.com/SciML/NeuralPDE.jl)]
+10. **IDRLnet: A Physics-Informed Neural Network Library**, *Wei Peng, Jun Zhang, Weien Zhou, Xiaoyu Zhao, Wen Yao, Xiaoqian Chen*, arXiv:2107.04320 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2107.04320.pdf)][[code](https://github.com/idrl-lab/idrlnet)]
+11. **NeuralUQ: A comprehensive library for uncertainty quantification in neural differential equations and operators**, *Zongren Zou, Xuhui Meng, Apostolos F. Psaros, George Em Karniadakis*, **UNKNOWN_JOURNAL**, 2022. [[paper](http://arxiv.org/pdf/2208.11866.pdf)][[code](https://github.com/Crunch-UQ4MI/neuraluq)]
+
+## Papers on PINN Models
+1. **Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations**, *M. Raissi, P. Perdikaris, G. E. Karniadakis*, Journal of Computational Physics, 2019. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999118307125)]
+2. **The deep Ritz method: a deep learning-based numerical algorithm for solving variational problems**, *E Weinan, Bing Yu*, Communications in Mathematics and Statistics, 2018. [[paper](https://link.springer.com/article/10.1007/s40304-018-0127-z)]
+3. **DGM: A deep learning algorithm for solving partial differential equations**, *Justin Sirignano, Konstantinos Spiliopoulos*, Journal of Computational Physics, 2018. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999118305527)]
+4. **SPINN: Sparse, Physics-based, and partially Interpretable Neural Networks for PDEs**, *Amuthan A. Ramabathiran, Ramach, Prabhu ran*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999121004952)][[code](https://github.com/nn4pde/SPINN)]
+5. **Deep neural network methods for solving forward and inverse problems of time fractional diffusion equations with conformable derivative**, *Yinlin Ye, Yajing Li, Hongtao Fan, Xinyi Liu, Hongbing Zhang*, arXiv:2108.07490 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2108.07490.pdf)]
+1. **NH-PINN: Neural homogenization based physics-informed neural network for multiscale problems**, *Wing Tat Leung, Guang Lin, Zecheng Zhang*, arXiv:2108.12942 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2108.12942.pdf)]
+1. **Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning**, *Ziming Liu, Yunyue Chen, Yuanqi Du, Max Tegmark*, arXiv:2109.13901 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.13901.pdf)]
+2. **Theory-guided hard constraint projection (HCP): A knowledge-based data-driven scientific machine learning method**, *Yuntian Chen, Dou Huang, Dongxiao Zhang, Junsheng Zeng, Nanzhe Wang, Haoran Zhang, Jinyue Yan*, Journal of Computational Physics, 2021. [[paper](https://linkinghub.elsevier.com/retrieve/pii/S0021999121005192)]
+3. **Learning in Sinusoidal Spaces with Physics-Informed Neural Networks**, *Jian Cheng Wong, Chinchun Ooi, Abhishek Gupta, Yew-Soon Ong*, arXiv:2109.09338 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.09338.pdf)]
+4. **HyperPINN: Learning parameterized differential equations with physics-informed hypernetworks**, *Filipe de Avila Belbute-Peres, Yi-fan Chen, Fei Sha*, **NIPS**, 2021. [[paper](https://openreview.net/forum?id=LxUuRDUhRjM)]
+1. **Physics-informed PointNet: A deep learning solver for steady-state incompressible flows and thermal fields on multiple sets of irregular geometries**, *AliKashefi, TapanMukerji*, Journal of Computational Physics, 2022. [[paper](https://doi.org/10.1016/j.jcp.2022.111510)]
+2. **Physics-informed graph neural Galerkin networks: A unified framework for solving PDE-governed forward and inverse problems**, *HanGao, Matthew J.Zahr, Jian-XunWang*, Computer Methods in Applied Mechanics and Engineering, 2022. [[paper](https://doi.org/10.1016/j.cma.2021.114502)]
+3. **PhyGNNet: Solving spatiotemporal PDEs with Physics-informed Graph Neural Network**, *Longxiang Jiang, Liyuan Wang, Xinkun Chu, Yonghao Xiao and Hao Zhang*, arXiv:2208.04319 [cs.NE], 2022. [[paper](https://arxiv.org/abs/2208.04319)]
+4. **ModalPINN : an extension of Physics-Informed Neural Networks with enforced truncated Fourier decomposition for periodic flow reconstruction using a limited number of imperfect sensors**, * Ga´etan Raynaud , S´ebastien Houde, Fr´ed´erick P Gosselin*, Journal of Computational Physics, 2022. [[paper](https://doi.org/10.1016/j.jcp.2022.111271)]
+1. **∆-PINNs: physics-informed neural networks on complex geometries**, *Francisco Sahli Costabal, Simone Pezzuto, Paris Perdikaris*, **Arxiv**, 2022. [[paper](http://arxiv.org/pdf/2209.03984.pdf)]
+1. **Robust Regression with Highly Corrupted Data via Physics Informed Neural Networks**, *Wei Peng, Wen Yao, Weien Zhou, Xiaoya Zhang, Weijie Yao*, **ArXiv**, 2022. [[paper](http://arxiv.org/pdf/2210.10646.pdf)][[code](https://github.com/weipengOO98/robust_pinn)]
+
+## Papers on Parallel PINN
+1. **Parallel Physics-Informed Neural Networks via Domain Decomposition**, *Khemraj Shukla, Ameya D. Jagtap, George Em Karniadakis*, arXiv:2104.10013 [cs], 2021. [[paper](https://arxiv.org/pdf/2104.10013)]
+2. **Finite Basis Physics-Informed Neural Networks (FBPINNs): a scalable domain decomposition approach for solving differential equations**, *Ben Moseley, Andrew Markham, Tarje Nissen-Meyer*, arXiv:2107.07871 [physics], 2021. [[paper](https://arxiv.org/pdf/2107.07871)]
+3. **PPINN: Parareal physics-informed neural network for time-dependent PDEs**, *Xuhui Meng, Zhen Li, Dongkun Zhang, George Em Karniadakis*, Computer Methods in Applied Mechanics and Engineering, 2020. [[paper](https://arxiv.org/pdf/2104.10013)]
+4. **When Do Extended Physics-Informed Neural Networks (XPINNs) Improve Generalization?**, *Zheyuan Hu, Ameya D. Jagtap, George Em Karniadakis, Kenji Kawaguchi*, arXiv:2109.09444 [cs, math, stat], 2021. [[paper](http://arxiv.org/pdf/2109.09444.pdf)]
+5. **Scaling physics-informed neural networks to large domains by using domain decomposition**, *Ben Moseley, Andrew Markham, Tarje Nissen-Meyer*, *NIPS*, 2021. [[paper](https://openreview.net/forum?id=o1WiAZiw_CE)]
+6. **Finite Basis Physics-Informed Neural Networks (FBPINNs): a scalable domain decomposition approach for solving differential equations**, *Ben Moseley, Andrew Markham, Tarje Nissen-Meyer*, arXiv:2107.07871 [physics], 2021. [[paper](http://arxiv.org/pdf/2107.07871.pdf)]
+1. **Improved Deep Neural Networks with Domain Decomposition in Solving Partial Differential Equations**, *Wei Wu, Xinlong Feng, Hui Xu*, Journal of Scientific Computing, 2022. [[paper](https://doi.org/10.1007/s10915-022-01980-y)]
+1. **INN: Interfaced neural networks as an accessible meshless approach for solving interface PDE problems**, *Sidi Wu, Benzhuo Lu*, Journal of Computational Physics, 2022. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999122006507)][[code](https://github.com/bzlu-Group/INN)]
+
+## Papers on PINN Accerleration
+1. **Self-adaptive loss balanced Physics-informed neural networks for the incompressible Navier-Stokes equations**, *Zixue Xiang, Wei Peng, Xiaohu Zheng, Xiaoyu Zhao, Wen Yao*, arXiv:2104.06217 [physics], 2021. [[paper](https://arxiv.org/pdf/2104.06217)]
+2. **A Dual-Dimer method for training physics-constrained neural networks with minimax architecture**, *Dehao Liu, Yan Wang*, Neural Networks, 2021. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0893608020304536)]
+3. **Adversarial Multi-task Learning Enhanced Physics-informed Neural Networks for Solving Partial Differential Equations**, *Pongpisit Thanasutives, Masayuki Numao, Ken-ichi Fukui*, arXiv:2104.14320 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2104.14320)]
+4. **DPM: A Novel Training Method for Physics-Informed Neural Networks in Extrapolation**, *Jungeun Kim, Kookjin Lee, Dongeun Lee, Sheo Yon Jin, Noseong Park*, AAAI, 2021. [[paper](https://www.aaai.org/AAAI21Papers/AAAI-4849.KimJ.pdf)]
+5. **Gradient-enhanced physics-informed neural networks for forward and inverse PDE problems**, *Jeremy Yu, Lu Lu, Xuhui Meng, George Em Karniadakis*, Arxiv, 2021.  [[paper](https://arxiv.org/abs/2111.02801)]
+6. **CAN-PINN: A Fast Physics-Informed Neural Network Based on Coupled-Automatic-Numerical Differentiation Method**, *Pao-Hsiung Chiu, Jian Cheng Wong, Chinchun Ooi, My Ha Dao, Yew-Soon Ong*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2110.15832)]
+7. **A hybrid physics-informed neural network for nonlinear partial differential equation**, *Chunyue Lv, Lei Wang, Chenming Xie*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2112.01696)]
+8. **Multi-Objective Loss Balancing for Physics-Informed Deep Learning**, *Rafael Bischof, Michael Kraus*, Arxiv, 2021. [[paper](http://rgdoi.net/10.13140/RG.2.2.20057.24169)]
+9. **A High-Efficient Hybrid Physics-Informed Neural Networks Based on Convolutional Neural Network**,  *Zhiwei Fang*,  IEEE Transactions on Neural Networks and Learning Systems, 2021. [[paper](https://ieeexplore.ieee.org/document/9403414)]
+10. **RPINNs: Rectified-physics informed neural networks for solving stationary partial differential equations**,  *Pai Peng, Jiangong Pan, Hui Xu, Xinlong Feng*,  Computers & Fluids, 2022. [[paper](https://doi.org/10.1016/j.compfluid.2022.105583)]
+11. **A comprehensive study of non-adaptive and residual-based adaptive sampling for physics-informed neural networks**,  *Chenxi Wu,Min Zhu,Qinyang Tan,Yadhu Kartha,Lu Lu*, arXiv:2207.10289 [cs], 2022. [[paper](https://arxiv.org/pdf/2207.10289.pdf)]
+12. **A Novel Adaptive Causal Sampling Method for Physics-Informed Neural Networks**,  *Jia Guo, Haifeng Wang, Chenping Hou*, 	arXiv:2210.12914 [cs], 2022. [[paper](https://arxiv.org/pdf/2210.12914.pdf)]
+13. **Accelerated Training of Physics-Informed Neural Networks (PINNs) using Meshless Discretizations**,  *Ramansh Sharma, Varun Shankar*, 	NeurIPS, 2022. [[paper](https://arxiv.org/abs/2205.09332)]
+14. **Is L2 Physics-Informed Loss Always Suitable for Training Physics-Informed Neural Network**,  *Chuwei Wang, Shanda Li, Di He, Liwei Wang*, 	NeurIPS, 2022. [[paper](https://arxiv.org/abs/2206.02016)]
+
+
+## Papers on Model Transfer & Meta-Learning
+1. **A physics-aware learning architecture with input transfer networks for predictive modeling**, *Amir Behjat, Chen Zeng, Rahul Rai, Ion Matei, David Doermann, Souma Chowdhury*, Applied Soft Computing, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S1568494620306037)]
+2. **Transfer learning based multi-fidelity physics informed deep neural network**, *Souvik Chakraborty*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999120307166)]
+3. **Transfer learning enhanced physics informed neural network for phase-field modeling of fracture**, *Somdatta Goswami, Cosmin Anitescu, Souvik Chakraborty, Timon Rabczuk*, Theoretical and Applied Fracture Mechanics, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S016784421930357X)]
+4. **Meta-learning PINN loss functions**, *Apostolos F. Psaros, Kenji Kawaguchi, George Em Karniadakis*, arXiv:2107.05544 [cs], 2021. [[paper](https://arxiv.org/pdf/2107.05544.pdf)]
+5. **Meta-PDE: Learning to Solve PDEs Quickly Without a Mesh**, *Tian Qin,Alex Beatson,Deniz Oktay,Nick McGreivy,Ryan P. Adams*, 	arXiv:2211.01604 [cs], 2022. [[paper](https://arxiv.org/pdf/2211.01604.pdf)]
+5. **Physics-Informed Neural Networks (PINNs) for Parameterized PDEs: A Metalearning Approach**, *Michael Penwarden, Sh Zhe, ian, Akil Narayan, Robert M. Kirby*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2110.13361)]
+
+## Papers on Probabilistic PINNs and Uncertainty Quantification
+1. **A physics-aware, probabilistic machine learning framework for coarse-graining high-dimensional systems in the Small Data regime**, *Constantin Grigo, Phaedon-Stelios Koutsourelakis*, Journal of Computational Physics, 2019. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999119305261)]
+2. **Adversarial uncertainty quantification in physics-informed neural networks**, *Yibo Yang, Paris Perdikaris*, Journal of Computational Physics, 2019. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999119303584)]
+3. **B-PINNs: Bayesian physics-informed neural networks for forward and inverse PDE problems with noisy data**, *Liu Yang, Xuhui Meng, George Em Karniadakis*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999120306872)]
+4. **PID-GAN: A GAN Framework based on a Physics-informed Discriminator for Uncertainty Quantification with Physics**, *Arka Daw, M. Maruf, Anuj Karpatne*, arXiv:2106.02993 [cs, stat], 2021. [[paper](https://arxiv.org/pdf/2106.02993)]
+5. **Quantifying Uncertainty in Physics-Informed Variational Autoencoders for Anomaly Detection**, *Marcus J. Neuer*, ESTEP, 2020. [[paper](https://link.springer.com/chapter/10.1007/978-3-030-69367-1_3)]
+6. **A Physics-Data-Driven Bayesian Method for Heat Conduction Problems**, *Xinchao Jiang, Hu Wang, Yu li*, arXiv:2109.00996 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.00996.pdf)]
+7. **Wasserstein Generative Adversarial Uncertainty Quantification in Physics-Informed Neural Networks**, *Yihang Gao, Michael K. Ng*, arXiv:2108.13054 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2108.13054.pdf)]
+8. **Flow Field Tomography with Uncertainty Quantification using a Bayesian Physics-Informed Neural Network**, *Joseph P. Molnar, Samuel J. Grauer*, arXiv:2108.09247 [physics], 2021. [[paper](http://arxiv.org/pdf/2108.09247.pdf)]
+9. **Stochastic Physics-Informed Neural Networks (SPINN): A Moment-Matching Framework for Learning Hidden Physics within Stochastic Differential Equations**, *Jared O'Leary, Joel A. Paulson, Ali Mesbah*, arXiv:2109.01621 [cs], 2021. [[paper](http://arxiv.org/pdf/2109.01621.pdf)]
+10. **Spectral PINNs: Fast Uncertainty Propagation with Physics-Informed Neural Networks**, *Björn Lütjens, Catherine H. Crawford, Mark Veillette, Dava Newman*, *NIPS*, 2021. [[paper](https://openreview.net/forum?id=218sl_mPChc)]
+11. **Robust Learning of Physics Informed Neural Networks**, *Ch Bajaj, rajit, Luke McLennan, Timothy Andeen, Avik Roy*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2110.13330)]
+1. **Bayesian Physics Informed Neural Networks for real-world nonlinear dynamical systems**,  *Kevin Linka, Amelie Schäfer, Xuhui Meng, Zongren Zou, George EmKarniadakis, Ellen Kuhl*,  Computer Methods in Applied Mechanics and Engineering, 2022. [[paper](https://doi.org/10.1016/j.cma.2022.115346)]
+2. **Multi-output physics-informed neural networks for forward and inverse PDE problems with uncertainties**,  *Mingyuan Yang, John T.Foster*,  Computer Methods in Applied Mechanics and Engineering, 2022. [[paper](https://doi.org/10.1016/j.cma.2022.115041)]
+
+## Papers on Applications
+1. **Physics-informed neural networks for high-speed flows**, *Zhiping Mao, Ameya D. Jagtap, George Em Karniadakis*, Computer Methods in Applied Mechanics and Engineering, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0045782519306814)]
+2. **Surrogate modeling for fluid flows based on physics-constrained deep learning without simulation data**, *Luning Sun, Han Gao, Shaowu Pan, Jian-Xun Wang*, Computer Methods in Applied Mechanics and Engineering, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S004578251930622X)]
+3. **Hidden fluid mechanics: Learning velocity and pressure fields from flow visualizations**, *Maziar Raissi, Alireza Yazdani, George Em Karniadakis*, Science, 2020. [[paper](https://science.sciencemag.org/content/367/6481/1026.full)]
+4. **NSFnets (Navier-Stokes flow nets): Physics-informed neural networks for the incompressible Navier-Stokes equations**, *Xiaowei Jin, Shengze Cai, Hui Li, George Em Karniadakis*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999120307257)]
+5. **A High-Efficient Hybrid Physics-Informed Neural Networks Based on Convolutional Neural Network**, *Zhiwei Fang*, IEEE Transactions on Neural Networks and Learning Systems, 2021. [[paper](https://ieeexplore.ieee.org/abstract/document/9403414)]
+6. **A Study on a Feedforward Neural Network to Solve Partial Differential Equations in Hyperbolic-Transport Problems**, *Eduardo Abreu, Joao B. Florindo*, ICCS, 2021. [[paper](https://link.springer.com/chapter/10.1007/978-3-030-77964-1_31)]
+7. **A Physics Informed Neural Network Approach to Solution and Identification of Biharmonic Equations of Elasticity**, *Mohammad Vahab, Ehsan Haghighat, Maryam Khaleghi, Nasser Khalili*, arXiv:2108.07243 [cs], 2021. [[paper](http://arxiv.org/pdf/2108.07243.pdf)]
+8. **Prediction of porous media fluid flow using physics informed neural networks**, *Muhammad M. Almajid, Moataz O. Abu-Alsaud*, Journal of Petroleum Science and Engineering, 2021. [[paper](https://linkinghub.elsevier.com/retrieve/pii/S0920410521008597)]
+9. **Investigating a New Approach to Quasinormal Modes: Physics-Informed Neural Networks**, *Anele M. Ncube, Gerhard E. Harmsen, Alan S. Cornell*, arXiv:2108.05867 [gr-qc], 2021. [[paper](http://arxiv.org/pdf/2108.05867.pdf)]
+10. **Towards neural Earth system modelling by integrating artificial intelligence in Earth system science**, *Christopher Irrgang, Niklas Boers, Maike Sonnewald, Elizabeth A. Barnes, Christopher Kadow, Joanna Staneva, Jan Saynisch-Wagner*, Nature Machine Intelligence, 2021. [[paper](https://www.nature.com/articles/s42256-021-00374-3)]
+11. **Physics-informed Neural Network for Nonlinear Dynamics in Fiber Optics**, *Xiaotian Jiang, Danshi Wang, Qirui Fan, Min Zhang, Chao Lu, Alan Pak Tao Lau*, arXiv:2109.00526 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.00526.pdf)]
+12. **On Theory-training Neural Networks to Infer the Solution of Highly Coupled Differential Equations**, *M. Torabi Rad, A. Viardin, M. Apel*, arXiv:2102.04890 [physics], 2021. [[paper](http://arxiv.org/pdf/2102.04890.pdf)]
+13. **Theory-training deep neural networks for an alloy solidification benchmark problem**, *M. Torabi Rad, A. Viardin, G. J. Schmitz, M. Apel*, arXiv:1912.09800 [physics], 2019. [[paper](http://arxiv.org/pdf/1912.09800.pdf)]
+14. **Explicit physics-informed neural networks for nonlinear closure: The case of transport in tissues**, *Ehsan Taghizadeh, Helen M. Byrne, Brian D. Wood*, Journal of Computational Physics, 2022. [[paper](https://linkinghub.elsevier.com/retrieve/pii/S0021999121006768)]
+1. **A mixed formulation for physics-informed neural networks as a potential solver for engineering problems in heterogeneous domains: comparison with finite element method**, *Shahed Rezaei, Ali Harandi, Ahmad Moeineddin, Bai-Xiang Xu, Stefanie Reese*, arXiv:2206.13103 [cs.CE], 2022. [[paper](https://arxiv.org/abs/2206.13103)]
+2. **A generalized framework for unsupervised learning and data recovery in computational fluid dynamics using discretized loss functions**,  *Jot Singh Aulakh, Steven B. Beale,  and Jon G. Pharoah*,  Physics of Fluids, 2022. [[paper](https://doi.org/10.1063/5.0097480)]
+3. **Physics-Informed Neural Networks for AC Optimal Power Flow**, *Rahul Nellikkath, Spyros Chatzivasileiadis*,  Electric Power Systems Research, 2022. [[paper](https://doi.org/10.1016/j.epsr.2022.108412)]
+4. **Physics-informed neural networks for the shallow-water equations on the sphere**, *Alex Bihlo, Roman O.Popovych*,  Journal of Computational Physics, 2022. [[paper](https://doi.org/10.1016/j.jcp.2022.111024)]
+5. **A Physics-Informed Machine Learning Approach for Estimating Lithium-Ion Battery Temperature**, *Gyouho Cho, Mengqi Wang, Youngki Kim, Jaerock Kwon, Wencong Su*, IEEE Access, 2022. [[paper](https://ieeexplore.ieee.org/document/9858911/)]
+1. **Physically guided deep learning solver for time-dependent Fokker–Planck equation**, *Yang Zhang, Ka-Veng Yuen*, International Journal of Non-Linear Mechanics, 2022. [[paper](https://www.sciencedirect.com/science/article/pii/S0020746222001792)]
+1. **A Physically Consistent Framework for Fatigue Life Prediction using Probabilistic Physics-Informed Neural Network**, *Taotao Zhou, Shan Jiang, Te Han, Shun-Peng Zhu, Yinan Cai*, International Journal of Fatigue, 2022. [[paper](https://www.sciencedirect.com/science/article/pii/S0142112322004844)]
+1. **Inverse modeling of nonisothermal multiphase poromechanics using physics-informed neural networks**, *Danial Amini, Ehsan Haghighat, Ruben Juanes*, **Arxiv**, 2022. [[paper](http://arxiv.org/pdf/2209.03276.pdf)][[code](https://github.com/sciann/sciann-applications/tree/master/SciANN-PoroElasticity))]
+
+## Papers on PINN Analysis
+1. **Estimates on the generalization error of physics-informed neural networks for approximating a class of inverse problems for PDEs**, *Siddhartha Mishra, Roberto Molinaro*, IMA Journal of Numerical Analysis, 2021. [[paper](https://academic.oup.com/imajna/advance-article-abstract/doi/10.1093/imanum/drab032/6297946)]
+2. **Error analysis for physics informed neural networks (PINNs) approximating Kolmogorov PDEs**, *Tim De Ryck, Siddhartha Mishra*, arXiv:2106.14473 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2106.14473.pdf)]
+3. **Error Analysis of Deep Ritz Methods for Elliptic Equations**, *Yuling Jiao, Yanming Lai, Yisu Luo, Yang Wang, Yunfei Yang*, arXiv:2107.14478 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2107.14478.pdf)]
+4. **Learning Partial Differential Equations in Reproducing Kernel Hilbert Spaces**, *George Stepaniants*, arXiv:2108.11580 [cs, math, stat], 2021. [[paper](http://arxiv.org/pdf/2108.11580.pdf)]
+5. **Simultaneous Neural Network Approximations in Sobolev Spaces**, *Sean Hon, Haizhao Yang*, arXiv:2109.00161 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.00161.pdf)]
+6. **Characterizing possible failure modes in physics-informed neural networks**, *Aditi S. Krishnapriyan, Amir Gholami, Sh Zhe, ian, Robert M. Kirby, Michael W. Mahoney*, arXiv:2109.01050 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.01050.pdf)]
+7. **Understanding and Mitigating Gradient Flow Pathologies in Physics-Informed Neural Networks**, *Sifan Wang, Yujun Teng, Paris Perdikaris*, SIAM Journal on Scientific Computing, 2021. [[paper](https://epubs.siam.org/doi/10.1137/20M1318043)]
+8. **Variational Physics Informed Neural Networks: the role of quadratures and test functions**, *Stefano Berrone, Claudio Canuto, Moreno Pintore*, arXiv:2109.02035 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.02035.pdf)]
+9. **Convergence Analysis for the PINNs**, *Yuling Jiao, Yanming Lai, Dingwei Li, Xiliang Lu, Yang Wang, Jerry Zhijian Yang*, arXiv:2109.01780 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.01780.pdf)]
+10. **Characterizing possible failure modes in physics-informed neural networks**, *Aditi Krishnapriyan, Amir Gholami, Sh Zhe, ian, Robert Kirby, Michael W. Mahoney*, *NIPS*, 2021. [[paper](https://openreview.net/forum?id=a2Gr9gNFD-J)]
+11. **Convergence rate of DeepONets for learning operators arising from advection-diffusion equations**, *Beichuan Deng, Yeonjong Shin, Lu Lu, Zhongqiang Zhang, George Em Karniadakis*, arXiv:2102.10621 [math], 2021. [[paper](https://arxiv.org/abs/2102.10621)]
+12. **Estimates on the generalization error of physics-informed neural networks for approximating PDEs**, *Siddhartha Mishra, Roberto Molinaro*, IMA Journal of Numerical Analysis, 2022. [[paper](https://academic.oup.com/imajna/advance-article/doi/10.1093/imanum/drab093/6503953)]
+1. **Investigating and Mitigating Failure Modes in Physics-informed Neural Networks (PINNs)**, *Shamsulhaq Basir*, **arXiv:2209.09988v1[cs]**, **2022**. [[paper](https://arxiv.org/pdf/2209.09988.pdf)][[code](https://github.com/shamsbasir/investigating_mitigating_failure_modes_in_pinns)]。">
+<meta property="og:title" content="PINNs-Github 论文总结备份">
+<meta property="og:description" content="# PINNpapers
+
+Contributed by [IDRL lab](https://github.com/idrl-lab).
+
+- [PINNpapers](#pinnpapers)
+  - [Introduction](#introduction)
+  - [Software](#software)
+  - [Papers on PINN Models](#papers-on-pinn-models)
+  - [Papers on Parallel PINN](#papers-on-parallel-pinn)
+  - [Papers on PINN Accerleration](#papers-on-pinn-accerleration)
+  - [Papers on Model Transfer & Meta-Learning](#papers-on-model-transfer--meta-learning)
+  - [Papers on Probabilistic PINNs and Uncertainty Quantification](#papers-on-probabilistic-pinns-and-uncertainty-quantification)
+  - [Papers on Applications](#papers-on-applications)
+  - [Papers on PINN Analysis](#papers-on-pinn-analysis)
+
+## Introduction
+
+Physics-Informed Neural Network (PINN) has achieved great success in scientific computing since 2017. In this repo, we list some representative work on PINNs. Feel free to distribute or use it!
+
+Corrections and suggestions are welcomed.
+
+A [script](./ref_convert.py) for converting bibtex to the markdown used in this repo is also provided for your convenience.
+
+## Software
+
+
+
+
+1. **DeepXDE: A Deep Learning Library for Solving Differential Equations**, *Lu Lu, Xuhui Meng, Zhiping Mao, George Em Karniadakis*, SIAM Review, 2021. [[paper](https://epubs.siam.org/doi/pdf/10.1137/19M1274067)][[code](https://github.com/lululxvi/deepxde)]
+2. **NVIDIA SimNet™: An AI-Accelerated Multi-Physics Simulation Framework**, *Oliver Hennigh, Susheela Narasimhan, Mohammad Amin Nabian, Akshay Subramaniam, Kaustubh Tangsali, Zhiwei Fang, Max Rietmann, Wonmin Byeon, Sanjay Choudhry*, **ICCS**, 2021. [[paper](https://link.springer.com/chapter/10.1007/978-3-030-77977-1_36)]
+3. **SciANN: A Keras wrapper for scientific computations and physics-informed deep learning using artificial neural networks**, *Ehsan Haghighat, Ruben Juanes*, arXiv preprint arXiv:2005.08803, 2020. [[paper](https://www.sciencedirect.com/science/article/pii/S0045782520307374)][[code](https://github.com/sciann/sciann)]
+4. **Elvet -- a neural network-based differential equation and variational problem solver**, *Jack Y. Araz, Juan Carlos Criado, Michael Spannowsky*, arXiv:2103.14575 [hep-lat, physics:hep-ph, physics:hep-th, stat], 2021. [[paper](https://arxiv.org/pdf/2103.14575)][[code](https://gitlab.com/elvet/elvet)]
+5. **TensorDiffEq: Scalable Multi-GPU Forward and Inverse Solvers for Physics Informed Neural Networks**, *Levi D. McClenny, Mulugeta A. Haile, Ulisses M. Braga-Neto*, arXiv:2103.16034 [physics], 2021. [[paper](https://arxiv.org/pdf/2103.16034)][[code](https://github.com/tensordiffeq/TensorDiffEq)]
+6. **PyDEns: a Python Framework for Solving Differential Equations with Neural Networks**, *Alex Koryagin, er, Roman Khudorozkov, Sergey Tsimfer*, arXiv:1909.11544 [cs, stat], 2019. [[paper]()]
+7. **NeuroDiffEq: A Python package for solving differential equations with neural networks**, *Feiyu Chen, David Sondak, Pavlos Protopapas, Marios Mattheakis, Shuheng Liu, Devansh Agarwal, Marco Di Giovanni*, Journal of Open Source Software, 2020. [[paper](https://joss.theoj.org/papers/10.21105/joss.01931)][[code](https://github.com/analysiscenter/pydens)]
+8. **Universal Differential Equations for Scientific Machine Learning**, *Christopher Rackauckas, Yingbo Ma, Julius Martensen, Collin Warner, Kirill Zubov, Rohit Supekar, Dominic Skinner, Ali Ramadhan, Alan Edelman*, arXiv:2001.04385 [cs, math, q-bio, stat], 2020. [[paper](https://arxiv.org/pdf/2001.04385.pdf)][[code](https://github.com/ChrisRackauckas/universal_differential_equations)]
+9. **NeuralPDE: Automating Physics-Informed Neural Networks (PINNs) with Error Approximations**, *Kirill Zubov, Zoe McCarthy, Yingbo Ma, Francesco Calisto, Valerio Pagliarino, Simone Azeglio, Luca Bottero, Emmanuel Luján, Valentin Sulzer, Ashutosh Bharambe, N Vinchhi, , Kaushik Balakrishnan, Devesh Upadhyay, Chris Rackauckas*, arXiv:2107.09443 [cs], 2021. [[paper](https://arxiv.org/pdf/2107.09443)][[code](https://github.com/SciML/NeuralPDE.jl)]
+10. **IDRLnet: A Physics-Informed Neural Network Library**, *Wei Peng, Jun Zhang, Weien Zhou, Xiaoyu Zhao, Wen Yao, Xiaoqian Chen*, arXiv:2107.04320 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2107.04320.pdf)][[code](https://github.com/idrl-lab/idrlnet)]
+11. **NeuralUQ: A comprehensive library for uncertainty quantification in neural differential equations and operators**, *Zongren Zou, Xuhui Meng, Apostolos F. Psaros, George Em Karniadakis*, **UNKNOWN_JOURNAL**, 2022. [[paper](http://arxiv.org/pdf/2208.11866.pdf)][[code](https://github.com/Crunch-UQ4MI/neuraluq)]
+
+## Papers on PINN Models
+1. **Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations**, *M. Raissi, P. Perdikaris, G. E. Karniadakis*, Journal of Computational Physics, 2019. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999118307125)]
+2. **The deep Ritz method: a deep learning-based numerical algorithm for solving variational problems**, *E Weinan, Bing Yu*, Communications in Mathematics and Statistics, 2018. [[paper](https://link.springer.com/article/10.1007/s40304-018-0127-z)]
+3. **DGM: A deep learning algorithm for solving partial differential equations**, *Justin Sirignano, Konstantinos Spiliopoulos*, Journal of Computational Physics, 2018. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999118305527)]
+4. **SPINN: Sparse, Physics-based, and partially Interpretable Neural Networks for PDEs**, *Amuthan A. Ramabathiran, Ramach, Prabhu ran*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999121004952)][[code](https://github.com/nn4pde/SPINN)]
+5. **Deep neural network methods for solving forward and inverse problems of time fractional diffusion equations with conformable derivative**, *Yinlin Ye, Yajing Li, Hongtao Fan, Xinyi Liu, Hongbing Zhang*, arXiv:2108.07490 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2108.07490.pdf)]
+1. **NH-PINN: Neural homogenization based physics-informed neural network for multiscale problems**, *Wing Tat Leung, Guang Lin, Zecheng Zhang*, arXiv:2108.12942 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2108.12942.pdf)]
+1. **Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning**, *Ziming Liu, Yunyue Chen, Yuanqi Du, Max Tegmark*, arXiv:2109.13901 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.13901.pdf)]
+2. **Theory-guided hard constraint projection (HCP): A knowledge-based data-driven scientific machine learning method**, *Yuntian Chen, Dou Huang, Dongxiao Zhang, Junsheng Zeng, Nanzhe Wang, Haoran Zhang, Jinyue Yan*, Journal of Computational Physics, 2021. [[paper](https://linkinghub.elsevier.com/retrieve/pii/S0021999121005192)]
+3. **Learning in Sinusoidal Spaces with Physics-Informed Neural Networks**, *Jian Cheng Wong, Chinchun Ooi, Abhishek Gupta, Yew-Soon Ong*, arXiv:2109.09338 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.09338.pdf)]
+4. **HyperPINN: Learning parameterized differential equations with physics-informed hypernetworks**, *Filipe de Avila Belbute-Peres, Yi-fan Chen, Fei Sha*, **NIPS**, 2021. [[paper](https://openreview.net/forum?id=LxUuRDUhRjM)]
+1. **Physics-informed PointNet: A deep learning solver for steady-state incompressible flows and thermal fields on multiple sets of irregular geometries**, *AliKashefi, TapanMukerji*, Journal of Computational Physics, 2022. [[paper](https://doi.org/10.1016/j.jcp.2022.111510)]
+2. **Physics-informed graph neural Galerkin networks: A unified framework for solving PDE-governed forward and inverse problems**, *HanGao, Matthew J.Zahr, Jian-XunWang*, Computer Methods in Applied Mechanics and Engineering, 2022. [[paper](https://doi.org/10.1016/j.cma.2021.114502)]
+3. **PhyGNNet: Solving spatiotemporal PDEs with Physics-informed Graph Neural Network**, *Longxiang Jiang, Liyuan Wang, Xinkun Chu, Yonghao Xiao and Hao Zhang*, arXiv:2208.04319 [cs.NE], 2022. [[paper](https://arxiv.org/abs/2208.04319)]
+4. **ModalPINN : an extension of Physics-Informed Neural Networks with enforced truncated Fourier decomposition for periodic flow reconstruction using a limited number of imperfect sensors**, * Ga´etan Raynaud , S´ebastien Houde, Fr´ed´erick P Gosselin*, Journal of Computational Physics, 2022. [[paper](https://doi.org/10.1016/j.jcp.2022.111271)]
+1. **∆-PINNs: physics-informed neural networks on complex geometries**, *Francisco Sahli Costabal, Simone Pezzuto, Paris Perdikaris*, **Arxiv**, 2022. [[paper](http://arxiv.org/pdf/2209.03984.pdf)]
+1. **Robust Regression with Highly Corrupted Data via Physics Informed Neural Networks**, *Wei Peng, Wen Yao, Weien Zhou, Xiaoya Zhang, Weijie Yao*, **ArXiv**, 2022. [[paper](http://arxiv.org/pdf/2210.10646.pdf)][[code](https://github.com/weipengOO98/robust_pinn)]
+
+## Papers on Parallel PINN
+1. **Parallel Physics-Informed Neural Networks via Domain Decomposition**, *Khemraj Shukla, Ameya D. Jagtap, George Em Karniadakis*, arXiv:2104.10013 [cs], 2021. [[paper](https://arxiv.org/pdf/2104.10013)]
+2. **Finite Basis Physics-Informed Neural Networks (FBPINNs): a scalable domain decomposition approach for solving differential equations**, *Ben Moseley, Andrew Markham, Tarje Nissen-Meyer*, arXiv:2107.07871 [physics], 2021. [[paper](https://arxiv.org/pdf/2107.07871)]
+3. **PPINN: Parareal physics-informed neural network for time-dependent PDEs**, *Xuhui Meng, Zhen Li, Dongkun Zhang, George Em Karniadakis*, Computer Methods in Applied Mechanics and Engineering, 2020. [[paper](https://arxiv.org/pdf/2104.10013)]
+4. **When Do Extended Physics-Informed Neural Networks (XPINNs) Improve Generalization?**, *Zheyuan Hu, Ameya D. Jagtap, George Em Karniadakis, Kenji Kawaguchi*, arXiv:2109.09444 [cs, math, stat], 2021. [[paper](http://arxiv.org/pdf/2109.09444.pdf)]
+5. **Scaling physics-informed neural networks to large domains by using domain decomposition**, *Ben Moseley, Andrew Markham, Tarje Nissen-Meyer*, *NIPS*, 2021. [[paper](https://openreview.net/forum?id=o1WiAZiw_CE)]
+6. **Finite Basis Physics-Informed Neural Networks (FBPINNs): a scalable domain decomposition approach for solving differential equations**, *Ben Moseley, Andrew Markham, Tarje Nissen-Meyer*, arXiv:2107.07871 [physics], 2021. [[paper](http://arxiv.org/pdf/2107.07871.pdf)]
+1. **Improved Deep Neural Networks with Domain Decomposition in Solving Partial Differential Equations**, *Wei Wu, Xinlong Feng, Hui Xu*, Journal of Scientific Computing, 2022. [[paper](https://doi.org/10.1007/s10915-022-01980-y)]
+1. **INN: Interfaced neural networks as an accessible meshless approach for solving interface PDE problems**, *Sidi Wu, Benzhuo Lu*, Journal of Computational Physics, 2022. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999122006507)][[code](https://github.com/bzlu-Group/INN)]
+
+## Papers on PINN Accerleration
+1. **Self-adaptive loss balanced Physics-informed neural networks for the incompressible Navier-Stokes equations**, *Zixue Xiang, Wei Peng, Xiaohu Zheng, Xiaoyu Zhao, Wen Yao*, arXiv:2104.06217 [physics], 2021. [[paper](https://arxiv.org/pdf/2104.06217)]
+2. **A Dual-Dimer method for training physics-constrained neural networks with minimax architecture**, *Dehao Liu, Yan Wang*, Neural Networks, 2021. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0893608020304536)]
+3. **Adversarial Multi-task Learning Enhanced Physics-informed Neural Networks for Solving Partial Differential Equations**, *Pongpisit Thanasutives, Masayuki Numao, Ken-ichi Fukui*, arXiv:2104.14320 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2104.14320)]
+4. **DPM: A Novel Training Method for Physics-Informed Neural Networks in Extrapolation**, *Jungeun Kim, Kookjin Lee, Dongeun Lee, Sheo Yon Jin, Noseong Park*, AAAI, 2021. [[paper](https://www.aaai.org/AAAI21Papers/AAAI-4849.KimJ.pdf)]
+5. **Gradient-enhanced physics-informed neural networks for forward and inverse PDE problems**, *Jeremy Yu, Lu Lu, Xuhui Meng, George Em Karniadakis*, Arxiv, 2021.  [[paper](https://arxiv.org/abs/2111.02801)]
+6. **CAN-PINN: A Fast Physics-Informed Neural Network Based on Coupled-Automatic-Numerical Differentiation Method**, *Pao-Hsiung Chiu, Jian Cheng Wong, Chinchun Ooi, My Ha Dao, Yew-Soon Ong*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2110.15832)]
+7. **A hybrid physics-informed neural network for nonlinear partial differential equation**, *Chunyue Lv, Lei Wang, Chenming Xie*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2112.01696)]
+8. **Multi-Objective Loss Balancing for Physics-Informed Deep Learning**, *Rafael Bischof, Michael Kraus*, Arxiv, 2021. [[paper](http://rgdoi.net/10.13140/RG.2.2.20057.24169)]
+9. **A High-Efficient Hybrid Physics-Informed Neural Networks Based on Convolutional Neural Network**,  *Zhiwei Fang*,  IEEE Transactions on Neural Networks and Learning Systems, 2021. [[paper](https://ieeexplore.ieee.org/document/9403414)]
+10. **RPINNs: Rectified-physics informed neural networks for solving stationary partial differential equations**,  *Pai Peng, Jiangong Pan, Hui Xu, Xinlong Feng*,  Computers & Fluids, 2022. [[paper](https://doi.org/10.1016/j.compfluid.2022.105583)]
+11. **A comprehensive study of non-adaptive and residual-based adaptive sampling for physics-informed neural networks**,  *Chenxi Wu,Min Zhu,Qinyang Tan,Yadhu Kartha,Lu Lu*, arXiv:2207.10289 [cs], 2022. [[paper](https://arxiv.org/pdf/2207.10289.pdf)]
+12. **A Novel Adaptive Causal Sampling Method for Physics-Informed Neural Networks**,  *Jia Guo, Haifeng Wang, Chenping Hou*, 	arXiv:2210.12914 [cs], 2022. [[paper](https://arxiv.org/pdf/2210.12914.pdf)]
+13. **Accelerated Training of Physics-Informed Neural Networks (PINNs) using Meshless Discretizations**,  *Ramansh Sharma, Varun Shankar*, 	NeurIPS, 2022. [[paper](https://arxiv.org/abs/2205.09332)]
+14. **Is L2 Physics-Informed Loss Always Suitable for Training Physics-Informed Neural Network**,  *Chuwei Wang, Shanda Li, Di He, Liwei Wang*, 	NeurIPS, 2022. [[paper](https://arxiv.org/abs/2206.02016)]
+
+
+## Papers on Model Transfer & Meta-Learning
+1. **A physics-aware learning architecture with input transfer networks for predictive modeling**, *Amir Behjat, Chen Zeng, Rahul Rai, Ion Matei, David Doermann, Souma Chowdhury*, Applied Soft Computing, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S1568494620306037)]
+2. **Transfer learning based multi-fidelity physics informed deep neural network**, *Souvik Chakraborty*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999120307166)]
+3. **Transfer learning enhanced physics informed neural network for phase-field modeling of fracture**, *Somdatta Goswami, Cosmin Anitescu, Souvik Chakraborty, Timon Rabczuk*, Theoretical and Applied Fracture Mechanics, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S016784421930357X)]
+4. **Meta-learning PINN loss functions**, *Apostolos F. Psaros, Kenji Kawaguchi, George Em Karniadakis*, arXiv:2107.05544 [cs], 2021. [[paper](https://arxiv.org/pdf/2107.05544.pdf)]
+5. **Meta-PDE: Learning to Solve PDEs Quickly Without a Mesh**, *Tian Qin,Alex Beatson,Deniz Oktay,Nick McGreivy,Ryan P. Adams*, 	arXiv:2211.01604 [cs], 2022. [[paper](https://arxiv.org/pdf/2211.01604.pdf)]
+5. **Physics-Informed Neural Networks (PINNs) for Parameterized PDEs: A Metalearning Approach**, *Michael Penwarden, Sh Zhe, ian, Akil Narayan, Robert M. Kirby*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2110.13361)]
+
+## Papers on Probabilistic PINNs and Uncertainty Quantification
+1. **A physics-aware, probabilistic machine learning framework for coarse-graining high-dimensional systems in the Small Data regime**, *Constantin Grigo, Phaedon-Stelios Koutsourelakis*, Journal of Computational Physics, 2019. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999119305261)]
+2. **Adversarial uncertainty quantification in physics-informed neural networks**, *Yibo Yang, Paris Perdikaris*, Journal of Computational Physics, 2019. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999119303584)]
+3. **B-PINNs: Bayesian physics-informed neural networks for forward and inverse PDE problems with noisy data**, *Liu Yang, Xuhui Meng, George Em Karniadakis*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999120306872)]
+4. **PID-GAN: A GAN Framework based on a Physics-informed Discriminator for Uncertainty Quantification with Physics**, *Arka Daw, M. Maruf, Anuj Karpatne*, arXiv:2106.02993 [cs, stat], 2021. [[paper](https://arxiv.org/pdf/2106.02993)]
+5. **Quantifying Uncertainty in Physics-Informed Variational Autoencoders for Anomaly Detection**, *Marcus J. Neuer*, ESTEP, 2020. [[paper](https://link.springer.com/chapter/10.1007/978-3-030-69367-1_3)]
+6. **A Physics-Data-Driven Bayesian Method for Heat Conduction Problems**, *Xinchao Jiang, Hu Wang, Yu li*, arXiv:2109.00996 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.00996.pdf)]
+7. **Wasserstein Generative Adversarial Uncertainty Quantification in Physics-Informed Neural Networks**, *Yihang Gao, Michael K. Ng*, arXiv:2108.13054 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2108.13054.pdf)]
+8. **Flow Field Tomography with Uncertainty Quantification using a Bayesian Physics-Informed Neural Network**, *Joseph P. Molnar, Samuel J. Grauer*, arXiv:2108.09247 [physics], 2021. [[paper](http://arxiv.org/pdf/2108.09247.pdf)]
+9. **Stochastic Physics-Informed Neural Networks (SPINN): A Moment-Matching Framework for Learning Hidden Physics within Stochastic Differential Equations**, *Jared O'Leary, Joel A. Paulson, Ali Mesbah*, arXiv:2109.01621 [cs], 2021. [[paper](http://arxiv.org/pdf/2109.01621.pdf)]
+10. **Spectral PINNs: Fast Uncertainty Propagation with Physics-Informed Neural Networks**, *Björn Lütjens, Catherine H. Crawford, Mark Veillette, Dava Newman*, *NIPS*, 2021. [[paper](https://openreview.net/forum?id=218sl_mPChc)]
+11. **Robust Learning of Physics Informed Neural Networks**, *Ch Bajaj, rajit, Luke McLennan, Timothy Andeen, Avik Roy*, Arxiv, 2021. [[paper](https://arxiv.org/abs/2110.13330)]
+1. **Bayesian Physics Informed Neural Networks for real-world nonlinear dynamical systems**,  *Kevin Linka, Amelie Schäfer, Xuhui Meng, Zongren Zou, George EmKarniadakis, Ellen Kuhl*,  Computer Methods in Applied Mechanics and Engineering, 2022. [[paper](https://doi.org/10.1016/j.cma.2022.115346)]
+2. **Multi-output physics-informed neural networks for forward and inverse PDE problems with uncertainties**,  *Mingyuan Yang, John T.Foster*,  Computer Methods in Applied Mechanics and Engineering, 2022. [[paper](https://doi.org/10.1016/j.cma.2022.115041)]
+
+## Papers on Applications
+1. **Physics-informed neural networks for high-speed flows**, *Zhiping Mao, Ameya D. Jagtap, George Em Karniadakis*, Computer Methods in Applied Mechanics and Engineering, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0045782519306814)]
+2. **Surrogate modeling for fluid flows based on physics-constrained deep learning without simulation data**, *Luning Sun, Han Gao, Shaowu Pan, Jian-Xun Wang*, Computer Methods in Applied Mechanics and Engineering, 2020. [[paper](https://www.sciencedirect.com/science/article/abs/pii/S004578251930622X)]
+3. **Hidden fluid mechanics: Learning velocity and pressure fields from flow visualizations**, *Maziar Raissi, Alireza Yazdani, George Em Karniadakis*, Science, 2020. [[paper](https://science.sciencemag.org/content/367/6481/1026.full)]
+4. **NSFnets (Navier-Stokes flow nets): Physics-informed neural networks for the incompressible Navier-Stokes equations**, *Xiaowei Jin, Shengze Cai, Hui Li, George Em Karniadakis*, Journal of Computational Physics, 2021. [[paper](https://www.sciencedirect.com/science/article/pii/S0021999120307257)]
+5. **A High-Efficient Hybrid Physics-Informed Neural Networks Based on Convolutional Neural Network**, *Zhiwei Fang*, IEEE Transactions on Neural Networks and Learning Systems, 2021. [[paper](https://ieeexplore.ieee.org/abstract/document/9403414)]
+6. **A Study on a Feedforward Neural Network to Solve Partial Differential Equations in Hyperbolic-Transport Problems**, *Eduardo Abreu, Joao B. Florindo*, ICCS, 2021. [[paper](https://link.springer.com/chapter/10.1007/978-3-030-77964-1_31)]
+7. **A Physics Informed Neural Network Approach to Solution and Identification of Biharmonic Equations of Elasticity**, *Mohammad Vahab, Ehsan Haghighat, Maryam Khaleghi, Nasser Khalili*, arXiv:2108.07243 [cs], 2021. [[paper](http://arxiv.org/pdf/2108.07243.pdf)]
+8. **Prediction of porous media fluid flow using physics informed neural networks**, *Muhammad M. Almajid, Moataz O. Abu-Alsaud*, Journal of Petroleum Science and Engineering, 2021. [[paper](https://linkinghub.elsevier.com/retrieve/pii/S0920410521008597)]
+9. **Investigating a New Approach to Quasinormal Modes: Physics-Informed Neural Networks**, *Anele M. Ncube, Gerhard E. Harmsen, Alan S. Cornell*, arXiv:2108.05867 [gr-qc], 2021. [[paper](http://arxiv.org/pdf/2108.05867.pdf)]
+10. **Towards neural Earth system modelling by integrating artificial intelligence in Earth system science**, *Christopher Irrgang, Niklas Boers, Maike Sonnewald, Elizabeth A. Barnes, Christopher Kadow, Joanna Staneva, Jan Saynisch-Wagner*, Nature Machine Intelligence, 2021. [[paper](https://www.nature.com/articles/s42256-021-00374-3)]
+11. **Physics-informed Neural Network for Nonlinear Dynamics in Fiber Optics**, *Xiaotian Jiang, Danshi Wang, Qirui Fan, Min Zhang, Chao Lu, Alan Pak Tao Lau*, arXiv:2109.00526 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.00526.pdf)]
+12. **On Theory-training Neural Networks to Infer the Solution of Highly Coupled Differential Equations**, *M. Torabi Rad, A. Viardin, M. Apel*, arXiv:2102.04890 [physics], 2021. [[paper](http://arxiv.org/pdf/2102.04890.pdf)]
+13. **Theory-training deep neural networks for an alloy solidification benchmark problem**, *M. Torabi Rad, A. Viardin, G. J. Schmitz, M. Apel*, arXiv:1912.09800 [physics], 2019. [[paper](http://arxiv.org/pdf/1912.09800.pdf)]
+14. **Explicit physics-informed neural networks for nonlinear closure: The case of transport in tissues**, *Ehsan Taghizadeh, Helen M. Byrne, Brian D. Wood*, Journal of Computational Physics, 2022. [[paper](https://linkinghub.elsevier.com/retrieve/pii/S0021999121006768)]
+1. **A mixed formulation for physics-informed neural networks as a potential solver for engineering problems in heterogeneous domains: comparison with finite element method**, *Shahed Rezaei, Ali Harandi, Ahmad Moeineddin, Bai-Xiang Xu, Stefanie Reese*, arXiv:2206.13103 [cs.CE], 2022. [[paper](https://arxiv.org/abs/2206.13103)]
+2. **A generalized framework for unsupervised learning and data recovery in computational fluid dynamics using discretized loss functions**,  *Jot Singh Aulakh, Steven B. Beale,  and Jon G. Pharoah*,  Physics of Fluids, 2022. [[paper](https://doi.org/10.1063/5.0097480)]
+3. **Physics-Informed Neural Networks for AC Optimal Power Flow**, *Rahul Nellikkath, Spyros Chatzivasileiadis*,  Electric Power Systems Research, 2022. [[paper](https://doi.org/10.1016/j.epsr.2022.108412)]
+4. **Physics-informed neural networks for the shallow-water equations on the sphere**, *Alex Bihlo, Roman O.Popovych*,  Journal of Computational Physics, 2022. [[paper](https://doi.org/10.1016/j.jcp.2022.111024)]
+5. **A Physics-Informed Machine Learning Approach for Estimating Lithium-Ion Battery Temperature**, *Gyouho Cho, Mengqi Wang, Youngki Kim, Jaerock Kwon, Wencong Su*, IEEE Access, 2022. [[paper](https://ieeexplore.ieee.org/document/9858911/)]
+1. **Physically guided deep learning solver for time-dependent Fokker–Planck equation**, *Yang Zhang, Ka-Veng Yuen*, International Journal of Non-Linear Mechanics, 2022. [[paper](https://www.sciencedirect.com/science/article/pii/S0020746222001792)]
+1. **A Physically Consistent Framework for Fatigue Life Prediction using Probabilistic Physics-Informed Neural Network**, *Taotao Zhou, Shan Jiang, Te Han, Shun-Peng Zhu, Yinan Cai*, International Journal of Fatigue, 2022. [[paper](https://www.sciencedirect.com/science/article/pii/S0142112322004844)]
+1. **Inverse modeling of nonisothermal multiphase poromechanics using physics-informed neural networks**, *Danial Amini, Ehsan Haghighat, Ruben Juanes*, **Arxiv**, 2022. [[paper](http://arxiv.org/pdf/2209.03276.pdf)][[code](https://github.com/sciann/sciann-applications/tree/master/SciANN-PoroElasticity))]
+
+## Papers on PINN Analysis
+1. **Estimates on the generalization error of physics-informed neural networks for approximating a class of inverse problems for PDEs**, *Siddhartha Mishra, Roberto Molinaro*, IMA Journal of Numerical Analysis, 2021. [[paper](https://academic.oup.com/imajna/advance-article-abstract/doi/10.1093/imanum/drab032/6297946)]
+2. **Error analysis for physics informed neural networks (PINNs) approximating Kolmogorov PDEs**, *Tim De Ryck, Siddhartha Mishra*, arXiv:2106.14473 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2106.14473.pdf)]
+3. **Error Analysis of Deep Ritz Methods for Elliptic Equations**, *Yuling Jiao, Yanming Lai, Yisu Luo, Yang Wang, Yunfei Yang*, arXiv:2107.14478 [cs, math], 2021. [[paper](https://arxiv.org/pdf/2107.14478.pdf)]
+4. **Learning Partial Differential Equations in Reproducing Kernel Hilbert Spaces**, *George Stepaniants*, arXiv:2108.11580 [cs, math, stat], 2021. [[paper](http://arxiv.org/pdf/2108.11580.pdf)]
+5. **Simultaneous Neural Network Approximations in Sobolev Spaces**, *Sean Hon, Haizhao Yang*, arXiv:2109.00161 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.00161.pdf)]
+6. **Characterizing possible failure modes in physics-informed neural networks**, *Aditi S. Krishnapriyan, Amir Gholami, Sh Zhe, ian, Robert M. Kirby, Michael W. Mahoney*, arXiv:2109.01050 [physics], 2021. [[paper](http://arxiv.org/pdf/2109.01050.pdf)]
+7. **Understanding and Mitigating Gradient Flow Pathologies in Physics-Informed Neural Networks**, *Sifan Wang, Yujun Teng, Paris Perdikaris*, SIAM Journal on Scientific Computing, 2021. [[paper](https://epubs.siam.org/doi/10.1137/20M1318043)]
+8. **Variational Physics Informed Neural Networks: the role of quadratures and test functions**, *Stefano Berrone, Claudio Canuto, Moreno Pintore*, arXiv:2109.02035 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.02035.pdf)]
+9. **Convergence Analysis for the PINNs**, *Yuling Jiao, Yanming Lai, Dingwei Li, Xiliang Lu, Yang Wang, Jerry Zhijian Yang*, arXiv:2109.01780 [cs, math], 2021. [[paper](http://arxiv.org/pdf/2109.01780.pdf)]
+10. **Characterizing possible failure modes in physics-informed neural networks**, *Aditi Krishnapriyan, Amir Gholami, Sh Zhe, ian, Robert Kirby, Michael W. Mahoney*, *NIPS*, 2021. [[paper](https://openreview.net/forum?id=a2Gr9gNFD-J)]
+11. **Convergence rate of DeepONets for learning operators arising from advection-diffusion equations**, *Beichuan Deng, Yeonjong Shin, Lu Lu, Zhongqiang Zhang, George Em Karniadakis*, arXiv:2102.10621 [math], 2021. [[paper](https://arxiv.org/abs/2102.10621)]
+12. **Estimates on the generalization error of physics-informed neural networks for approximating PDEs**, *Siddhartha Mishra, Roberto Molinaro*, IMA Journal of Numerical Analysis, 2022. [[paper](https://academic.oup.com/imajna/advance-article/doi/10.1093/imanum/drab093/6503953)]
+1. **Investigating and Mitigating Failure Modes in Physics-informed Neural Networks (PINNs)**, *Shamsulhaq Basir*, **arXiv:2209.09988v1[cs]**, **2022**. [[paper](https://arxiv.org/pdf/2209.09988.pdf)][[code](https://github.com/shamsbasir/investigating_mitigating_failure_modes_in_pinns)]。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://EctorWang.github.io/post/PINNs-Github%20-lun-wen-zong-jie-bei-fen.html">
+<meta property="og:image" content="https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png">
+<title>PINNs-Github 论文总结备份</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">PINNs-Github 论文总结备份</h1>
+<div class="title-right">
+    <a href="https://EctorWang.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/EctorWang/EctorWang.github.io/issues/21" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>PINNpapers</h1>
+<p>Contributed by <a href="https://github.com/idrl-lab">IDRL lab</a>.</p>
+<ul>
+<li><a href="#pinnpapers">PINNpapers</a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#software">Software</a></li>
+<li><a href="#papers-on-pinn-models">Papers on PINN Models</a></li>
+<li><a href="#papers-on-parallel-pinn">Papers on Parallel PINN</a></li>
+<li><a href="#papers-on-pinn-accerleration">Papers on PINN Accerleration</a></li>
+<li><a href="#papers-on-model-transfer--meta-learning">Papers on Model Transfer &amp; Meta-Learning</a></li>
+<li><a href="#papers-on-probabilistic-pinns-and-uncertainty-quantification">Papers on Probabilistic PINNs and Uncertainty Quantification</a></li>
+<li><a href="#papers-on-applications">Papers on Applications</a></li>
+<li><a href="#papers-on-pinn-analysis">Papers on PINN Analysis</a></li>
+</ul>
+</li>
+</ul>
+<h2>Introduction</h2>
+<p>Physics-Informed Neural Network (PINN) has achieved great success in scientific computing since 2017. In this repo, we list some representative work on PINNs. Feel free to distribute or use it!</p>
+<p>Corrections and suggestions are welcomed.</p>
+<p>A <a href="./ref_convert.py">script</a> for converting bibtex to the markdown used in this repo is also provided for your convenience.</p>
+<h2>Software</h2>
+<ol>
+<li><strong>DeepXDE: A Deep Learning Library for Solving Differential Equations</strong>, <em>Lu Lu, Xuhui Meng, Zhiping Mao, George Em Karniadakis</em>, SIAM Review, 2021. [<a href="https://epubs.siam.org/doi/pdf/10.1137/19M1274067" rel="nofollow">paper</a>][<a href="https://github.com/lululxvi/deepxde">code</a>]</li>
+<li><strong>NVIDIA SimNet™: An AI-Accelerated Multi-Physics Simulation Framework</strong>, <em>Oliver Hennigh, Susheela Narasimhan, Mohammad Amin Nabian, Akshay Subramaniam, Kaustubh Tangsali, Zhiwei Fang, Max Rietmann, Wonmin Byeon, Sanjay Choudhry</em>, <strong>ICCS</strong>, 2021. [<a href="https://link.springer.com/chapter/10.1007/978-3-030-77977-1_36" rel="nofollow">paper</a>]</li>
+<li><strong>SciANN: A Keras wrapper for scientific computations and physics-informed deep learning using artificial neural networks</strong>, <em>Ehsan Haghighat, Ruben Juanes</em>, arXiv preprint arXiv:2005.08803, 2020. [<a href="https://www.sciencedirect.com/science/article/pii/S0045782520307374" rel="nofollow">paper</a>][<a href="https://github.com/sciann/sciann">code</a>]</li>
+<li><strong>Elvet -- a neural network-based differential equation and variational problem solver</strong>, <em>Jack Y. Araz, Juan Carlos Criado, Michael Spannowsky</em>, arXiv:2103.14575 [hep-lat, physics:hep-ph, physics:hep-th, stat], 2021. [<a href="https://arxiv.org/pdf/2103.14575" rel="nofollow">paper</a>][<a href="https://gitlab.com/elvet/elvet" rel="nofollow">code</a>]</li>
+<li><strong>TensorDiffEq: Scalable Multi-GPU Forward and Inverse Solvers for Physics Informed Neural Networks</strong>, <em>Levi D. McClenny, Mulugeta A. Haile, Ulisses M. Braga-Neto</em>, arXiv:2103.16034 [physics], 2021. [<a href="https://arxiv.org/pdf/2103.16034" rel="nofollow">paper</a>][<a href="https://github.com/tensordiffeq/TensorDiffEq">code</a>]</li>
+<li><strong>PyDEns: a Python Framework for Solving Differential Equations with Neural Networks</strong>, <em>Alex Koryagin, er, Roman Khudorozkov, Sergey Tsimfer</em>, arXiv:1909.11544 [cs, stat], 2019. [<a href="">paper</a>]</li>
+<li><strong>NeuroDiffEq: A Python package for solving differential equations with neural networks</strong>, <em>Feiyu Chen, David Sondak, Pavlos Protopapas, Marios Mattheakis, Shuheng Liu, Devansh Agarwal, Marco Di Giovanni</em>, Journal of Open Source Software, 2020. [<a href="https://joss.theoj.org/papers/10.21105/joss.01931" rel="nofollow">paper</a>][<a href="https://github.com/analysiscenter/pydens">code</a>]</li>
+<li><strong>Universal Differential Equations for Scientific Machine Learning</strong>, <em>Christopher Rackauckas, Yingbo Ma, Julius Martensen, Collin Warner, Kirill Zubov, Rohit Supekar, Dominic Skinner, Ali Ramadhan, Alan Edelman</em>, arXiv:2001.04385 [cs, math, q-bio, stat], 2020. [<a href="https://arxiv.org/pdf/2001.04385.pdf" rel="nofollow">paper</a>][<a href="https://github.com/ChrisRackauckas/universal_differential_equations">code</a>]</li>
+<li><strong>NeuralPDE: Automating Physics-Informed Neural Networks (PINNs) with Error Approximations</strong>, <em>Kirill Zubov, Zoe McCarthy, Yingbo Ma, Francesco Calisto, Valerio Pagliarino, Simone Azeglio, Luca Bottero, Emmanuel Luján, Valentin Sulzer, Ashutosh Bharambe, N Vinchhi, , Kaushik Balakrishnan, Devesh Upadhyay, Chris Rackauckas</em>, arXiv:2107.09443 [cs], 2021. [<a href="https://arxiv.org/pdf/2107.09443" rel="nofollow">paper</a>][<a href="https://github.com/SciML/NeuralPDE.jl">code</a>]</li>
+<li><strong>IDRLnet: A Physics-Informed Neural Network Library</strong>, <em>Wei Peng, Jun Zhang, Weien Zhou, Xiaoyu Zhao, Wen Yao, Xiaoqian Chen</em>, arXiv:2107.04320 [cs, math], 2021. [<a href="https://arxiv.org/pdf/2107.04320.pdf" rel="nofollow">paper</a>][<a href="https://github.com/idrl-lab/idrlnet">code</a>]</li>
+<li><strong>NeuralUQ: A comprehensive library for uncertainty quantification in neural differential equations and operators</strong>, <em>Zongren Zou, Xuhui Meng, Apostolos F. Psaros, George Em Karniadakis</em>, <strong>UNKNOWN_JOURNAL</strong>, 2022. [<a href="http://arxiv.org/pdf/2208.11866.pdf" rel="nofollow">paper</a>][<a href="https://github.com/Crunch-UQ4MI/neuraluq">code</a>]</li>
+</ol>
+<h2>Papers on PINN Models</h2>
+<ol>
+<li><strong>Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations</strong>, <em>M. Raissi, P. Perdikaris, G. E. Karniadakis</em>, Journal of Computational Physics, 2019. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999118307125" rel="nofollow">paper</a>]</li>
+<li><strong>The deep Ritz method: a deep learning-based numerical algorithm for solving variational problems</strong>, <em>E Weinan, Bing Yu</em>, Communications in Mathematics and Statistics, 2018. [<a href="https://link.springer.com/article/10.1007/s40304-018-0127-z" rel="nofollow">paper</a>]</li>
+<li><strong>DGM: A deep learning algorithm for solving partial differential equations</strong>, <em>Justin Sirignano, Konstantinos Spiliopoulos</em>, Journal of Computational Physics, 2018. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999118305527" rel="nofollow">paper</a>]</li>
+<li><strong>SPINN: Sparse, Physics-based, and partially Interpretable Neural Networks for PDEs</strong>, <em>Amuthan A. Ramabathiran, Ramach, Prabhu ran</em>, Journal of Computational Physics, 2021. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999121004952" rel="nofollow">paper</a>][<a href="https://github.com/nn4pde/SPINN">code</a>]</li>
+<li><strong>Deep neural network methods for solving forward and inverse problems of time fractional diffusion equations with conformable derivative</strong>, <em>Yinlin Ye, Yajing Li, Hongtao Fan, Xinyi Liu, Hongbing Zhang</em>, arXiv:2108.07490 [cs, math], 2021. [<a href="http://arxiv.org/pdf/2108.07490.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>NH-PINN: Neural homogenization based physics-informed neural network for multiscale problems</strong>, <em>Wing Tat Leung, Guang Lin, Zecheng Zhang</em>, arXiv:2108.12942 [cs, math], 2021. [<a href="http://arxiv.org/pdf/2108.12942.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning</strong>, <em>Ziming Liu, Yunyue Chen, Yuanqi Du, Max Tegmark</em>, arXiv:2109.13901 [physics], 2021. [<a href="http://arxiv.org/pdf/2109.13901.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Theory-guided hard constraint projection (HCP): A knowledge-based data-driven scientific machine learning method</strong>, <em>Yuntian Chen, Dou Huang, Dongxiao Zhang, Junsheng Zeng, Nanzhe Wang, Haoran Zhang, Jinyue Yan</em>, Journal of Computational Physics, 2021. [<a href="https://linkinghub.elsevier.com/retrieve/pii/S0021999121005192" rel="nofollow">paper</a>]</li>
+<li><strong>Learning in Sinusoidal Spaces with Physics-Informed Neural Networks</strong>, <em>Jian Cheng Wong, Chinchun Ooi, Abhishek Gupta, Yew-Soon Ong</em>, arXiv:2109.09338 [physics], 2021. [<a href="http://arxiv.org/pdf/2109.09338.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>HyperPINN: Learning parameterized differential equations with physics-informed hypernetworks</strong>, <em>Filipe de Avila Belbute-Peres, Yi-fan Chen, Fei Sha</em>, <strong>NIPS</strong>, 2021. [<a href="https://openreview.net/forum?id=LxUuRDUhRjM" rel="nofollow">paper</a>]</li>
+<li><strong>Physics-informed PointNet: A deep learning solver for steady-state incompressible flows and thermal fields on multiple sets of irregular geometries</strong>, <em>AliKashefi, TapanMukerji</em>, Journal of Computational Physics, 2022. [<a href="https://doi.org/10.1016/j.jcp.2022.111510" rel="nofollow">paper</a>]</li>
+<li><strong>Physics-informed graph neural Galerkin networks: A unified framework for solving PDE-governed forward and inverse problems</strong>, <em>HanGao, Matthew J.Zahr, Jian-XunWang</em>, Computer Methods in Applied Mechanics and Engineering, 2022. [<a href="https://doi.org/10.1016/j.cma.2021.114502" rel="nofollow">paper</a>]</li>
+<li><strong>PhyGNNet: Solving spatiotemporal PDEs with Physics-informed Graph Neural Network</strong>, <em>Longxiang Jiang, Liyuan Wang, Xinkun Chu, Yonghao Xiao and Hao Zhang</em>, arXiv:2208.04319 [cs.NE], 2022. [<a href="https://arxiv.org/abs/2208.04319" rel="nofollow">paper</a>]</li>
+<li><strong>ModalPINN : an extension of Physics-Informed Neural Networks with enforced truncated Fourier decomposition for periodic flow reconstruction using a limited number of imperfect sensors</strong>, * Ga´etan Raynaud , S´ebastien Houde, Fr´ed´erick P Gosselin*, Journal of Computational Physics, 2022. [<a href="https://doi.org/10.1016/j.jcp.2022.111271" rel="nofollow">paper</a>]</li>
+<li><strong>∆-PINNs: physics-informed neural networks on complex geometries</strong>, <em>Francisco Sahli Costabal, Simone Pezzuto, Paris Perdikaris</em>, <strong>Arxiv</strong>, 2022. [<a href="http://arxiv.org/pdf/2209.03984.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Robust Regression with Highly Corrupted Data via Physics Informed Neural Networks</strong>, <em>Wei Peng, Wen Yao, Weien Zhou, Xiaoya Zhang, Weijie Yao</em>, <strong>ArXiv</strong>, 2022. [<a href="http://arxiv.org/pdf/2210.10646.pdf" rel="nofollow">paper</a>][<a href="https://github.com/weipengOO98/robust_pinn">code</a>]</li>
+</ol>
+<h2>Papers on Parallel PINN</h2>
+<ol>
+<li><strong>Parallel Physics-Informed Neural Networks via Domain Decomposition</strong>, <em>Khemraj Shukla, Ameya D. Jagtap, George Em Karniadakis</em>, arXiv:2104.10013 [cs], 2021. [<a href="https://arxiv.org/pdf/2104.10013" rel="nofollow">paper</a>]</li>
+<li><strong>Finite Basis Physics-Informed Neural Networks (FBPINNs): a scalable domain decomposition approach for solving differential equations</strong>, <em>Ben Moseley, Andrew Markham, Tarje Nissen-Meyer</em>, arXiv:2107.07871 [physics], 2021. [<a href="https://arxiv.org/pdf/2107.07871" rel="nofollow">paper</a>]</li>
+<li><strong>PPINN: Parareal physics-informed neural network for time-dependent PDEs</strong>, <em>Xuhui Meng, Zhen Li, Dongkun Zhang, George Em Karniadakis</em>, Computer Methods in Applied Mechanics and Engineering, 2020. [<a href="https://arxiv.org/pdf/2104.10013" rel="nofollow">paper</a>]</li>
+<li><strong>When Do Extended Physics-Informed Neural Networks (XPINNs) Improve Generalization?</strong>, <em>Zheyuan Hu, Ameya D. Jagtap, George Em Karniadakis, Kenji Kawaguchi</em>, arXiv:2109.09444 [cs, math, stat], 2021. [<a href="http://arxiv.org/pdf/2109.09444.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Scaling physics-informed neural networks to large domains by using domain decomposition</strong>, <em>Ben Moseley, Andrew Markham, Tarje Nissen-Meyer</em>, <em>NIPS</em>, 2021. [<a href="https://openreview.net/forum?id=o1WiAZiw_CE" rel="nofollow">paper</a>]</li>
+<li><strong>Finite Basis Physics-Informed Neural Networks (FBPINNs): a scalable domain decomposition approach for solving differential equations</strong>, <em>Ben Moseley, Andrew Markham, Tarje Nissen-Meyer</em>, arXiv:2107.07871 [physics], 2021. [<a href="http://arxiv.org/pdf/2107.07871.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Improved Deep Neural Networks with Domain Decomposition in Solving Partial Differential Equations</strong>, <em>Wei Wu, Xinlong Feng, Hui Xu</em>, Journal of Scientific Computing, 2022. [<a href="https://doi.org/10.1007/s10915-022-01980-y" rel="nofollow">paper</a>]</li>
+<li><strong>INN: Interfaced neural networks as an accessible meshless approach for solving interface PDE problems</strong>, <em>Sidi Wu, Benzhuo Lu</em>, Journal of Computational Physics, 2022. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999122006507" rel="nofollow">paper</a>][<a href="https://github.com/bzlu-Group/INN">code</a>]</li>
+</ol>
+<h2>Papers on PINN Accerleration</h2>
+<ol>
+<li><strong>Self-adaptive loss balanced Physics-informed neural networks for the incompressible Navier-Stokes equations</strong>, <em>Zixue Xiang, Wei Peng, Xiaohu Zheng, Xiaoyu Zhao, Wen Yao</em>, arXiv:2104.06217 [physics], 2021. [<a href="https://arxiv.org/pdf/2104.06217" rel="nofollow">paper</a>]</li>
+<li><strong>A Dual-Dimer method for training physics-constrained neural networks with minimax architecture</strong>, <em>Dehao Liu, Yan Wang</em>, Neural Networks, 2021. [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608020304536" rel="nofollow">paper</a>]</li>
+<li><strong>Adversarial Multi-task Learning Enhanced Physics-informed Neural Networks for Solving Partial Differential Equations</strong>, <em>Pongpisit Thanasutives, Masayuki Numao, Ken-ichi Fukui</em>, arXiv:2104.14320 [cs, math], 2021. [<a href="https://arxiv.org/pdf/2104.14320" rel="nofollow">paper</a>]</li>
+<li><strong>DPM: A Novel Training Method for Physics-Informed Neural Networks in Extrapolation</strong>, <em>Jungeun Kim, Kookjin Lee, Dongeun Lee, Sheo Yon Jin, Noseong Park</em>, AAAI, 2021. [<a href="https://www.aaai.org/AAAI21Papers/AAAI-4849.KimJ.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Gradient-enhanced physics-informed neural networks for forward and inverse PDE problems</strong>, <em>Jeremy Yu, Lu Lu, Xuhui Meng, George Em Karniadakis</em>, Arxiv, 2021.  [<a href="https://arxiv.org/abs/2111.02801" rel="nofollow">paper</a>]</li>
+<li><strong>CAN-PINN: A Fast Physics-Informed Neural Network Based on Coupled-Automatic-Numerical Differentiation Method</strong>, <em>Pao-Hsiung Chiu, Jian Cheng Wong, Chinchun Ooi, My Ha Dao, Yew-Soon Ong</em>, Arxiv, 2021. [<a href="https://arxiv.org/abs/2110.15832" rel="nofollow">paper</a>]</li>
+<li><strong>A hybrid physics-informed neural network for nonlinear partial differential equation</strong>, <em>Chunyue Lv, Lei Wang, Chenming Xie</em>, Arxiv, 2021. [<a href="https://arxiv.org/abs/2112.01696" rel="nofollow">paper</a>]</li>
+<li><strong>Multi-Objective Loss Balancing for Physics-Informed Deep Learning</strong>, <em>Rafael Bischof, Michael Kraus</em>, Arxiv, 2021. [<a href="http://rgdoi.net/10.13140/RG.2.2.20057.24169" rel="nofollow">paper</a>]</li>
+<li><strong>A High-Efficient Hybrid Physics-Informed Neural Networks Based on Convolutional Neural Network</strong>,  <em>Zhiwei Fang</em>,  IEEE Transactions on Neural Networks and Learning Systems, 2021. [<a href="https://ieeexplore.ieee.org/document/9403414" rel="nofollow">paper</a>]</li>
+<li><strong>RPINNs: Rectified-physics informed neural networks for solving stationary partial differential equations</strong>,  <em>Pai Peng, Jiangong Pan, Hui Xu, Xinlong Feng</em>,  Computers &amp; Fluids, 2022. [<a href="https://doi.org/10.1016/j.compfluid.2022.105583" rel="nofollow">paper</a>]</li>
+<li><strong>A comprehensive study of non-adaptive and residual-based adaptive sampling for physics-informed neural networks</strong>,  <em>Chenxi Wu,Min Zhu,Qinyang Tan,Yadhu Kartha,Lu Lu</em>, arXiv:2207.10289 [cs], 2022. [<a href="https://arxiv.org/pdf/2207.10289.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>A Novel Adaptive Causal Sampling Method for Physics-Informed Neural Networks</strong>,  <em>Jia Guo, Haifeng Wang, Chenping Hou</em>, 	arXiv:2210.12914 [cs], 2022. [<a href="https://arxiv.org/pdf/2210.12914.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Accelerated Training of Physics-Informed Neural Networks (PINNs) using Meshless Discretizations</strong>,  <em>Ramansh Sharma, Varun Shankar</em>, 	NeurIPS, 2022. [<a href="https://arxiv.org/abs/2205.09332" rel="nofollow">paper</a>]</li>
+<li><strong>Is L2 Physics-Informed Loss Always Suitable for Training Physics-Informed Neural Network</strong>,  <em>Chuwei Wang, Shanda Li, Di He, Liwei Wang</em>, 	NeurIPS, 2022. [<a href="https://arxiv.org/abs/2206.02016" rel="nofollow">paper</a>]</li>
+</ol>
+<h2>Papers on Model Transfer &amp; Meta-Learning</h2>
+<ol>
+<li><strong>A physics-aware learning architecture with input transfer networks for predictive modeling</strong>, <em>Amir Behjat, Chen Zeng, Rahul Rai, Ion Matei, David Doermann, Souma Chowdhury</em>, Applied Soft Computing, 2020. [<a href="https://www.sciencedirect.com/science/article/abs/pii/S1568494620306037" rel="nofollow">paper</a>]</li>
+<li><strong>Transfer learning based multi-fidelity physics informed deep neural network</strong>, <em>Souvik Chakraborty</em>, Journal of Computational Physics, 2021. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999120307166" rel="nofollow">paper</a>]</li>
+<li><strong>Transfer learning enhanced physics informed neural network for phase-field modeling of fracture</strong>, <em>Somdatta Goswami, Cosmin Anitescu, Souvik Chakraborty, Timon Rabczuk</em>, Theoretical and Applied Fracture Mechanics, 2020. [<a href="https://www.sciencedirect.com/science/article/abs/pii/S016784421930357X" rel="nofollow">paper</a>]</li>
+<li><strong>Meta-learning PINN loss functions</strong>, <em>Apostolos F. Psaros, Kenji Kawaguchi, George Em Karniadakis</em>, arXiv:2107.05544 [cs], 2021. [<a href="https://arxiv.org/pdf/2107.05544.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Meta-PDE: Learning to Solve PDEs Quickly Without a Mesh</strong>, <em>Tian Qin,Alex Beatson,Deniz Oktay,Nick McGreivy,Ryan P. Adams</em>, 	arXiv:2211.01604 [cs], 2022. [<a href="https://arxiv.org/pdf/2211.01604.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Physics-Informed Neural Networks (PINNs) for Parameterized PDEs: A Metalearning Approach</strong>, <em>Michael Penwarden, Sh Zhe, ian, Akil Narayan, Robert M. Kirby</em>, Arxiv, 2021. [<a href="https://arxiv.org/abs/2110.13361" rel="nofollow">paper</a>]</li>
+</ol>
+<h2>Papers on Probabilistic PINNs and Uncertainty Quantification</h2>
+<ol>
+<li><strong>A physics-aware, probabilistic machine learning framework for coarse-graining high-dimensional systems in the Small Data regime</strong>, <em>Constantin Grigo, Phaedon-Stelios Koutsourelakis</em>, Journal of Computational Physics, 2019. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999119305261" rel="nofollow">paper</a>]</li>
+<li><strong>Adversarial uncertainty quantification in physics-informed neural networks</strong>, <em>Yibo Yang, Paris Perdikaris</em>, Journal of Computational Physics, 2019. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999119303584" rel="nofollow">paper</a>]</li>
+<li><strong>B-PINNs: Bayesian physics-informed neural networks for forward and inverse PDE problems with noisy data</strong>, <em>Liu Yang, Xuhui Meng, George Em Karniadakis</em>, Journal of Computational Physics, 2021. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999120306872" rel="nofollow">paper</a>]</li>
+<li><strong>PID-GAN: A GAN Framework based on a Physics-informed Discriminator for Uncertainty Quantification with Physics</strong>, <em>Arka Daw, M. Maruf, Anuj Karpatne</em>, arXiv:2106.02993 [cs, stat], 2021. [<a href="https://arxiv.org/pdf/2106.02993" rel="nofollow">paper</a>]</li>
+<li><strong>Quantifying Uncertainty in Physics-Informed Variational Autoencoders for Anomaly Detection</strong>, <em>Marcus J. Neuer</em>, ESTEP, 2020. [<a href="https://link.springer.com/chapter/10.1007/978-3-030-69367-1_3" rel="nofollow">paper</a>]</li>
+<li><strong>A Physics-Data-Driven Bayesian Method for Heat Conduction Problems</strong>, <em>Xinchao Jiang, Hu Wang, Yu li</em>, arXiv:2109.00996 [cs, math], 2021. [<a href="http://arxiv.org/pdf/2109.00996.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Wasserstein Generative Adversarial Uncertainty Quantification in Physics-Informed Neural Networks</strong>, <em>Yihang Gao, Michael K. Ng</em>, arXiv:2108.13054 [cs, math], 2021. [<a href="http://arxiv.org/pdf/2108.13054.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Flow Field Tomography with Uncertainty Quantification using a Bayesian Physics-Informed Neural Network</strong>, <em>Joseph P. Molnar, Samuel J. Grauer</em>, arXiv:2108.09247 [physics], 2021. [<a href="http://arxiv.org/pdf/2108.09247.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Stochastic Physics-Informed Neural Networks (SPINN): A Moment-Matching Framework for Learning Hidden Physics within Stochastic Differential Equations</strong>, <em>Jared O'Leary, Joel A. Paulson, Ali Mesbah</em>, arXiv:2109.01621 [cs], 2021. [<a href="http://arxiv.org/pdf/2109.01621.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Spectral PINNs: Fast Uncertainty Propagation with Physics-Informed Neural Networks</strong>, <em>Björn Lütjens, Catherine H. Crawford, Mark Veillette, Dava Newman</em>, <em>NIPS</em>, 2021. [<a href="https://openreview.net/forum?id=218sl_mPChc" rel="nofollow">paper</a>]</li>
+<li><strong>Robust Learning of Physics Informed Neural Networks</strong>, <em>Ch Bajaj, rajit, Luke McLennan, Timothy Andeen, Avik Roy</em>, Arxiv, 2021. [<a href="https://arxiv.org/abs/2110.13330" rel="nofollow">paper</a>]</li>
+<li><strong>Bayesian Physics Informed Neural Networks for real-world nonlinear dynamical systems</strong>,  <em>Kevin Linka, Amelie Schäfer, Xuhui Meng, Zongren Zou, George EmKarniadakis, Ellen Kuhl</em>,  Computer Methods in Applied Mechanics and Engineering, 2022. [<a href="https://doi.org/10.1016/j.cma.2022.115346" rel="nofollow">paper</a>]</li>
+<li><strong>Multi-output physics-informed neural networks for forward and inverse PDE problems with uncertainties</strong>,  <em>Mingyuan Yang, John T.Foster</em>,  Computer Methods in Applied Mechanics and Engineering, 2022. [<a href="https://doi.org/10.1016/j.cma.2022.115041" rel="nofollow">paper</a>]</li>
+</ol>
+<h2>Papers on Applications</h2>
+<ol>
+<li><strong>Physics-informed neural networks for high-speed flows</strong>, <em>Zhiping Mao, Ameya D. Jagtap, George Em Karniadakis</em>, Computer Methods in Applied Mechanics and Engineering, 2020. [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0045782519306814" rel="nofollow">paper</a>]</li>
+<li><strong>Surrogate modeling for fluid flows based on physics-constrained deep learning without simulation data</strong>, <em>Luning Sun, Han Gao, Shaowu Pan, Jian-Xun Wang</em>, Computer Methods in Applied Mechanics and Engineering, 2020. [<a href="https://www.sciencedirect.com/science/article/abs/pii/S004578251930622X" rel="nofollow">paper</a>]</li>
+<li><strong>Hidden fluid mechanics: Learning velocity and pressure fields from flow visualizations</strong>, <em>Maziar Raissi, Alireza Yazdani, George Em Karniadakis</em>, Science, 2020. [<a href="https://science.sciencemag.org/content/367/6481/1026.full" rel="nofollow">paper</a>]</li>
+<li><strong>NSFnets (Navier-Stokes flow nets): Physics-informed neural networks for the incompressible Navier-Stokes equations</strong>, <em>Xiaowei Jin, Shengze Cai, Hui Li, George Em Karniadakis</em>, Journal of Computational Physics, 2021. [<a href="https://www.sciencedirect.com/science/article/pii/S0021999120307257" rel="nofollow">paper</a>]</li>
+<li><strong>A High-Efficient Hybrid Physics-Informed Neural Networks Based on Convolutional Neural Network</strong>, <em>Zhiwei Fang</em>, IEEE Transactions on Neural Networks and Learning Systems, 2021. [<a href="https://ieeexplore.ieee.org/abstract/document/9403414" rel="nofollow">paper</a>]</li>
+<li><strong>A Study on a Feedforward Neural Network to Solve Partial Differential Equations in Hyperbolic-Transport Problems</strong>, <em>Eduardo Abreu, Joao B. Florindo</em>, ICCS, 2021. [<a href="https://link.springer.com/chapter/10.1007/978-3-030-77964-1_31" rel="nofollow">paper</a>]</li>
+<li><strong>A Physics Informed Neural Network Approach to Solution and Identification of Biharmonic Equations of Elasticity</strong>, <em>Mohammad Vahab, Ehsan Haghighat, Maryam Khaleghi, Nasser Khalili</em>, arXiv:2108.07243 [cs], 2021. [<a href="http://arxiv.org/pdf/2108.07243.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Prediction of porous media fluid flow using physics informed neural networks</strong>, <em>Muhammad M. Almajid, Moataz O. Abu-Alsaud</em>, Journal of Petroleum Science and Engineering, 2021. [<a href="https://linkinghub.elsevier.com/retrieve/pii/S0920410521008597" rel="nofollow">paper</a>]</li>
+<li><strong>Investigating a New Approach to Quasinormal Modes: Physics-Informed Neural Networks</strong>, <em>Anele M. Ncube, Gerhard E. Harmsen, Alan S. Cornell</em>, arXiv:2108.05867 [gr-qc], 2021. [<a href="http://arxiv.org/pdf/2108.05867.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Towards neural Earth system modelling by integrating artificial intelligence in Earth system science</strong>, <em>Christopher Irrgang, Niklas Boers, Maike Sonnewald, Elizabeth A. Barnes, Christopher Kadow, Joanna Staneva, Jan Saynisch-Wagner</em>, Nature Machine Intelligence, 2021. [<a href="https://www.nature.com/articles/s42256-021-00374-3" rel="nofollow">paper</a>]</li>
+<li><strong>Physics-informed Neural Network for Nonlinear Dynamics in Fiber Optics</strong>, <em>Xiaotian Jiang, Danshi Wang, Qirui Fan, Min Zhang, Chao Lu, Alan Pak Tao Lau</em>, arXiv:2109.00526 [physics], 2021. [<a href="http://arxiv.org/pdf/2109.00526.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>On Theory-training Neural Networks to Infer the Solution of Highly Coupled Differential Equations</strong>, <em>M. Torabi Rad, A. Viardin, M. Apel</em>, arXiv:2102.04890 [physics], 2021. [<a href="http://arxiv.org/pdf/2102.04890.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Theory-training deep neural networks for an alloy solidification benchmark problem</strong>, <em>M. Torabi Rad, A. Viardin, G. J. Schmitz, M. Apel</em>, arXiv:1912.09800 [physics], 2019. [<a href="http://arxiv.org/pdf/1912.09800.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Explicit physics-informed neural networks for nonlinear closure: The case of transport in tissues</strong>, <em>Ehsan Taghizadeh, Helen M. Byrne, Brian D. Wood</em>, Journal of Computational Physics, 2022. [<a href="https://linkinghub.elsevier.com/retrieve/pii/S0021999121006768" rel="nofollow">paper</a>]</li>
+<li><strong>A mixed formulation for physics-informed neural networks as a potential solver for engineering problems in heterogeneous domains: comparison with finite element method</strong>, <em>Shahed Rezaei, Ali Harandi, Ahmad Moeineddin, Bai-Xiang Xu, Stefanie Reese</em>, arXiv:2206.13103 [cs.CE], 2022. [<a href="https://arxiv.org/abs/2206.13103" rel="nofollow">paper</a>]</li>
+<li><strong>A generalized framework for unsupervised learning and data recovery in computational fluid dynamics using discretized loss functions</strong>,  <em>Jot Singh Aulakh, Steven B. Beale,  and Jon G. Pharoah</em>,  Physics of Fluids, 2022. [<a href="https://doi.org/10.1063/5.0097480" rel="nofollow">paper</a>]</li>
+<li><strong>Physics-Informed Neural Networks for AC Optimal Power Flow</strong>, <em>Rahul Nellikkath, Spyros Chatzivasileiadis</em>,  Electric Power Systems Research, 2022. [<a href="https://doi.org/10.1016/j.epsr.2022.108412" rel="nofollow">paper</a>]</li>
+<li><strong>Physics-informed neural networks for the shallow-water equations on the sphere</strong>, <em>Alex Bihlo, Roman O.Popovych</em>,  Journal of Computational Physics, 2022. [<a href="https://doi.org/10.1016/j.jcp.2022.111024" rel="nofollow">paper</a>]</li>
+<li><strong>A Physics-Informed Machine Learning Approach for Estimating Lithium-Ion Battery Temperature</strong>, <em>Gyouho Cho, Mengqi Wang, Youngki Kim, Jaerock Kwon, Wencong Su</em>, IEEE Access, 2022. [<a href="https://ieeexplore.ieee.org/document/9858911/" rel="nofollow">paper</a>]</li>
+<li><strong>Physically guided deep learning solver for time-dependent Fokker–Planck equation</strong>, <em>Yang Zhang, Ka-Veng Yuen</em>, International Journal of Non-Linear Mechanics, 2022. [<a href="https://www.sciencedirect.com/science/article/pii/S0020746222001792" rel="nofollow">paper</a>]</li>
+<li><strong>A Physically Consistent Framework for Fatigue Life Prediction using Probabilistic Physics-Informed Neural Network</strong>, <em>Taotao Zhou, Shan Jiang, Te Han, Shun-Peng Zhu, Yinan Cai</em>, International Journal of Fatigue, 2022. [<a href="https://www.sciencedirect.com/science/article/pii/S0142112322004844" rel="nofollow">paper</a>]</li>
+<li><strong>Inverse modeling of nonisothermal multiphase poromechanics using physics-informed neural networks</strong>, <em>Danial Amini, Ehsan Haghighat, Ruben Juanes</em>, <strong>Arxiv</strong>, 2022. [<a href="http://arxiv.org/pdf/2209.03276.pdf" rel="nofollow">paper</a>][<a href="https://github.com/sciann/sciann-applications/tree/master/SciANN-PoroElasticity">code</a>)]</li>
+</ol>
+<h2>Papers on PINN Analysis</h2>
+<ol>
+<li><strong>Estimates on the generalization error of physics-informed neural networks for approximating a class of inverse problems for PDEs</strong>, <em>Siddhartha Mishra, Roberto Molinaro</em>, IMA Journal of Numerical Analysis, 2021. [<a href="https://academic.oup.com/imajna/advance-article-abstract/doi/10.1093/imanum/drab032/6297946" rel="nofollow">paper</a>]</li>
+<li><strong>Error analysis for physics informed neural networks (PINNs) approximating Kolmogorov PDEs</strong>, <em>Tim De Ryck, Siddhartha Mishra</em>, arXiv:2106.14473 [cs, math], 2021. [<a href="https://arxiv.org/pdf/2106.14473.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Error Analysis of Deep Ritz Methods for Elliptic Equations</strong>, <em>Yuling Jiao, Yanming Lai, Yisu Luo, Yang Wang, Yunfei Yang</em>, arXiv:2107.14478 [cs, math], 2021. [<a href="https://arxiv.org/pdf/2107.14478.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Learning Partial Differential Equations in Reproducing Kernel Hilbert Spaces</strong>, <em>George Stepaniants</em>, arXiv:2108.11580 [cs, math, stat], 2021. [<a href="http://arxiv.org/pdf/2108.11580.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Simultaneous Neural Network Approximations in Sobolev Spaces</strong>, <em>Sean Hon, Haizhao Yang</em>, arXiv:2109.00161 [cs, math], 2021. [<a href="http://arxiv.org/pdf/2109.00161.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Characterizing possible failure modes in physics-informed neural networks</strong>, <em>Aditi S. Krishnapriyan, Amir Gholami, Sh Zhe, ian, Robert M. Kirby, Michael W. Mahoney</em>, arXiv:2109.01050 [physics], 2021. [<a href="http://arxiv.org/pdf/2109.01050.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Understanding and Mitigating Gradient Flow Pathologies in Physics-Informed Neural Networks</strong>, <em>Sifan Wang, Yujun Teng, Paris Perdikaris</em>, SIAM Journal on Scientific Computing, 2021. [<a href="https://epubs.siam.org/doi/10.1137/20M1318043" rel="nofollow">paper</a>]</li>
+<li><strong>Variational Physics Informed Neural Networks: the role of quadratures and test functions</strong>, <em>Stefano Berrone, Claudio Canuto, Moreno Pintore</em>, arXiv:2109.02035 [cs, math], 2021. [<a href="http://arxiv.org/pdf/2109.02035.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Convergence Analysis for the PINNs</strong>, <em>Yuling Jiao, Yanming Lai, Dingwei Li, Xiliang Lu, Yang Wang, Jerry Zhijian Yang</em>, arXiv:2109.01780 [cs, math], 2021. [<a href="http://arxiv.org/pdf/2109.01780.pdf" rel="nofollow">paper</a>]</li>
+<li><strong>Characterizing possible failure modes in physics-informed neural networks</strong>, <em>Aditi Krishnapriyan, Amir Gholami, Sh Zhe, ian, Robert Kirby, Michael W. Mahoney</em>, <em>NIPS</em>, 2021. [<a href="https://openreview.net/forum?id=a2Gr9gNFD-J" rel="nofollow">paper</a>]</li>
+<li><strong>Convergence rate of DeepONets for learning operators arising from advection-diffusion equations</strong>, <em>Beichuan Deng, Yeonjong Shin, Lu Lu, Zhongqiang Zhang, George Em Karniadakis</em>, arXiv:2102.10621 [math], 2021. [<a href="https://arxiv.org/abs/2102.10621" rel="nofollow">paper</a>]</li>
+<li><strong>Estimates on the generalization error of physics-informed neural networks for approximating PDEs</strong>, <em>Siddhartha Mishra, Roberto Molinaro</em>, IMA Journal of Numerical Analysis, 2022. [<a href="https://academic.oup.com/imajna/advance-article/doi/10.1093/imanum/drab093/6503953" rel="nofollow">paper</a>]</li>
+<li><strong>Investigating and Mitigating Failure Modes in Physics-informed Neural Networks (PINNs)</strong>, <em>Shamsulhaq Basir</em>, <strong>arXiv:2209.09988v1[cs]</strong>, <strong>2022</strong>. [<a href="https://arxiv.org/pdf/2209.09988.pdf" rel="nofollow">paper</a>][<a href="https://github.com/shamsbasir/investigating_mitigating_failure_modes_in_pinns">code</a>]</li>
+</ol></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://EctorWang.github.io">Ector Wang's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","EctorWang/EctorWang.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>
+
+</html>
