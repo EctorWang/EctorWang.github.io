@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Sun, 16 Feb 2025 10:19:09 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>2025年第一周工作记录与总结</title><link>https://EctorWang.github.io/post/2025-nian-di-yi-zhou-gong-zuo-ji-lu-yu-zong-jie.html</link><description>## 科研
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Tue, 18 Feb 2025 07:21:32 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>2025年第一周工作记录与总结</title><link>https://EctorWang.github.io/post/2025-nian-di-yi-zhou-gong-zuo-ji-lu-yu-zong-jie.html</link><description>## 科研
 有限元方法基础教程
 
 ## 读书
@@ -54,53 +54,56 @@ https://ectorwang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Ph
 日常部署在本地客服端使用的模型&#13;
 &#13;
 &#13;
-`Generative Pretrained Transformer：生成式预训练模型`。</description><guid isPermaLink="true">https://EctorWang.github.io/post/ChatGPT-xue-xi-he-shi-yong.html</guid><pubDate>Wed, 15 Jan 2025 15:53:05 +0000</pubDate></item><item><title>Reading Papers</title><link>https://EctorWang.github.io/post/Reading%20Papers.html</link><description>## 如何阅读论文&#13;
-&#13;
-### 查找论文&#13;
-&#13;
-- 权威文献搜索平台&#13;
-[web of science](https://webofscience.clarivate.cn/wos/alldb/basic-search)&#13;
-&#13;
-- 各种论文搜索&#13;
-[Scopus文献搜索](https://www.scopus.com/search/form.uri?display=basic#basic)&#13;
-&#13;
-- 不知道文献标题，根据期刊、年份、页数直达文献来源&#13;
-[X-MOL 文献直达](https://www.x-mol.com/zd)&#13;
-&#13;
-- 搜索一篇文献相关的各种文献&#13;
-[Connected papers](https://www.connectedpapers.com/)&#13;
-&#13;
-- 搜索学者比较好的平台&#13;
-[Aminer](https://www.aminer.cn/)&#13;
-&#13;
-- 导师和关键词搜索平台&#13;
-[X-MOL学术平添](https://www.x-mol.com/)&#13;
-&#13;
-&#13;
-&#13;
-### 如何下载论文&#13;
-SCI-Hub&#13;
-&#13;
-google-scholor&#13;
-&#13;
-&#13;
-&#13;
-### 如何阅读论文&#13;
-分标题&#13;
-&#13;
-&#13;
-### 如何整理论文&#13;
-&#13;
-&#13;
-### 如何输出&#13;
-```python&#13;
-论文DOI：&#13;
-论文题目：&#13;
-论文概括：两句话总结论文&#13;
-源代码：有无&#13;
-论文创新点/亮点：两到三点&#13;
-```&#13;
-&#13;
+`Generative Pretrained Transformer：生成式预训练模型`。</description><guid isPermaLink="true">https://EctorWang.github.io/post/ChatGPT-xue-xi-he-shi-yong.html</guid><pubDate>Wed, 15 Jan 2025 15:53:05 +0000</pubDate></item><item><title>Reading Papers</title><link>https://EctorWang.github.io/post/Reading%20Papers.html</link><description>## 如何阅读论文
+
+### 查找论文
+
+- 权威文献搜索平台
+[web of science](https://webofscience.clarivate.cn/wos/alldb/basic-search)
+
+- 各种论文搜索
+[Scopus文献搜索](https://www.scopus.com/search/form.uri?display=basic#basic)
+
+- 不知道文献标题，根据期刊、年份、页数直达文献来源
+[X-MOL 文献直达](https://www.x-mol.com/zd)
+
+- 搜索一篇文献相关的各种文献
+[Connected papers](https://www.connectedpapers.com/)
+
+- 搜索学者比较好的平台
+[Aminer](https://www.aminer.cn/)
+
+- 导师和关键词搜索平台
+[X-MOL学术平添](https://www.x-mol.com/)
+
+
+
+### 如何下载论文
+SCI-Hub
+
+google-scholor
+
+
+
+### 阅读论文
+将内容整理为两部分，一部分是文章作者，学校机构的相关调查
+这里可以整理好相关的XMind的模版进行相关内容的填充
+
+#### 论文背景
+如何输出
+```python
+论文DOI：
+论文题目：
+论文概括：两句话总结论文
+源代码：有无
+论文创新点/亮点：两到三点
+```
+
+#### 论文内容
+- 先大致了解全文的框架 / 使用豆包进行整理，整理为思维导图
+- 填充相关的部分
+ 
+
 。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Reading%20Papers.html</guid><pubDate>Wed, 15 Jan 2025 15:27:20 +0000</pubDate></item><item><title>Elastic mechanics</title><link>https://EctorWang.github.io/post/Elastic%20mechanics.html</link><description>## 学习相关流程&#13;
 &#13;
 **1. 先看参考书**&#13;
