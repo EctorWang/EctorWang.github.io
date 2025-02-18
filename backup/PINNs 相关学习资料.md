@@ -28,3 +28,10 @@
 
 - 关于PINNs的书籍资料
 https://ectorwang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html
+
+
+
+## PINNs相关推荐论文合集
+IDRL-Lab 
+- https://github.com/idrl-lab/PINNpapers
+`上面包括比较多的文献，介绍PINNs`
