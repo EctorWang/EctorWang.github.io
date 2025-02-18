@@ -35,3 +35,6 @@ https://ectorwang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Ph
 IDRL-Lab 
 - https://github.com/idrl-lab/PINNpapers
 `上面包括比较多的文献，介绍PINNs`
+
+- PINNs  GitHub 备份 
+- https://github.com/EctorWang/EctorWang.github.io/issues/21
