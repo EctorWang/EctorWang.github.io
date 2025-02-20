@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Thu, 20 Feb 2025 02:20:59 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>PINNs-Github 论文总结备份</title><link>https://EctorWang.github.io/post/PINNs-Github%20-lun-wen-zong-jie-bei-fen.html</link><description># PINNpapers
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Thu, 20 Feb 2025 02:47:23 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>PINNs-Github 论文总结备份</title><link>https://EctorWang.github.io/post/PINNs-Github%20-lun-wen-zong-jie-bei-fen.html</link><description># PINNpapers
 
 Contributed by [IDRL lab](https://github.com/idrl-lab).
 
@@ -302,28 +302,34 @@ D:\Software_file\Machine_Learning\Pytorch\limu_B_Up\Jupyter_Notebook&#13;
 ### 3. 搞不明白代码的看B站李沐关于课程的详细介绍&#13;
 &#13;
 [B站李沐课程学习](https://www.bilibili.com/list/1567748478?sid=358497&amp;spm_id_from=333.999.0.0&amp;desc=1&amp;oid=847592146&amp;bvid=BV1AL4y1Y7gu)&#13;
-。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Dive%20into%20deep%20learning_Pytorch.html</guid><pubDate>Wed, 15 Jan 2025 14:06:26 +0000</pubDate></item><item><title>Daily study</title><link>https://EctorWang.github.io/post/Daily%20study.html</link><description>## 安排每日的工作计划&#13;
-### 读一篇论文&#13;
-[读论文具体流程](https://ectorwang.github.io/post/Reading%20Papers.html)&#13;
-&#13;
-&#13;
-### 专业的参考书阅读&#13;
-[Deep Learning and Computational Physics](https://ectorwang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html)&#13;
-&#13;
-&#13;
-### Pytorch 李沐动手学深度学习&#13;
-[Pytorch学习的具体流程](https://ectorwang.github.io/post/Dive%20into%20deep%20learning_Pytorch.html)&#13;
-&#13;
-### 材料力学学习&#13;
-&#13;
-&#13;
-### 弹性力学学习&#13;
-[弹性力学学习流程介绍页面](https://ectorwang.github.io/post/Elastic%20mechanics.html)&#13;
-&#13;
-`上面所有的内容保存在本地的Markdown文件中，根据需要将需要展示的上传到github`&#13;
-&#13;
-&#13;
-### ChatGPT 使用和学习&#13;
+。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Dive%20into%20deep%20learning_Pytorch.html</guid><pubDate>Wed, 15 Jan 2025 14:06:26 +0000</pubDate></item><item><title>Daily study</title><link>https://EctorWang.github.io/post/Daily%20study.html</link><description>## 英语学习
+
+[英语学习计划]()
+ 
+
+
+## 安排每日的工作计划
+### 读一篇论文
+[读论文具体流程](https://ectorwang.github.io/post/Reading%20Papers.html)
+
+
+### 专业的参考书阅读
+[Deep Learning and Computational Physics](https://ectorwang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html)
+
+
+### Pytorch 李沐动手学深度学习
+[Pytorch学习的具体流程](https://ectorwang.github.io/post/Dive%20into%20deep%20learning_Pytorch.html)
+
+### 材料力学学习
+
+
+### 弹性力学学习
+[弹性力学学习流程介绍页面](https://ectorwang.github.io/post/Elastic%20mechanics.html)
+
+`上面所有的内容保存在本地的Markdown文件中，根据需要将需要展示的上传到github`
+
+
+### ChatGPT 使用和学习
 [ChatGPT使用和学习](https://ectorwang.github.io/post/ChatGPT-xue-xi-he-shi-yong.html)。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Daily%20study.html</guid><pubDate>Wed, 15 Jan 2025 13:36:29 +0000</pubDate></item><item><title>Book-Deep Learning and Computational Physics Paper reading-Chapter One</title><link>https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics%20Paper%20reading-Chapter%20One.html</link><description>## concent&#13;
 &#13;
 pages concent。</description><guid isPermaLink="true">https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics%20Paper%20reading-Chapter%20One.html</guid><pubDate>Tue, 14 Jan 2025 12:10:28 +0000</pubDate></item><item><title>Book-Deep Learning and Computational Physics</title><link>https://EctorWang.github.io/post/Book-Deep%20Learning%20and%20Computational%20Physics.html</link><description># Deep Learning and Computational Physics&#13;
