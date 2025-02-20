@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Thu, 20 Feb 2025 03:07:57 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>英语学习计划</title><link>https://EctorWang.github.io/post/ying-yu-xue-xi-ji-hua.html</link><description># 雅思英语7分学习计划
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ector Wang's Blog</title><link>https://EctorWang.github.io</link><description>Personal learning records</description><copyright>Ector Wang's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png</url><title>avatar</title><link>https://EctorWang.github.io</link></image><lastBuildDate>Thu, 20 Feb 2025 06:43:52 +0000</lastBuildDate><managingEditor>Ector Wang's Blog</managingEditor><ttl>60</ttl><webMaster>Ector Wang's Blog</webMaster><item><title>英语学习计划</title><link>https://EctorWang.github.io/post/ying-yu-xue-xi-ji-hua.html</link><description># 雅思英语7分学习计划
 
 ## 初级阶段
 ### 小猪佩奇
@@ -424,7 +424,7 @@ $$ \frac{\partial u}{\partial t}=\frac{\partial^{2}u}{\partial x^{2}}+\sigma(x,t
 4，公式后面空一行的接下来一行文字顶格，不空字符&#13;
 5，所有内容都放到markdown格式中&#13;
 ```&#13;
-&gt; 注意公式后面解释性的符号，那么就要将这些文字全部放到两个 $$ 之间，这样才会正常显示符号。</description><guid isPermaLink="true">https://EctorWang.github.io/post/SEU%20-di-17-zhou-zhou-bao.html</guid><pubDate>Tue, 07 Jan 2025 17:20:16 +0000</pubDate></item><item><title>知识分享</title><link>https://EctorWang.github.io/post/zhi-shi-fen-xiang.html</link><description>## 开通Github 个人博客&#13;
+&gt; 注意公式后面解释性的符号，那么就要将这些文字全部放到两个 $$ 之间，这样才会正常显示符号。</description><guid isPermaLink="true">https://EctorWang.github.io/post/SEU%20-di-17-zhou-zhou-bao.html</guid><pubDate>Tue, 07 Jan 2025 17:20:16 +0000</pubDate></item><item><title>个人博客 - 知识分享</title><link>https://EctorWang.github.io/post/ge-ren-bo-ke-%20-%20-zhi-shi-fen-xiang.html</link><description>## 开通Github 个人博客&#13;
 [开通博客的流程](https://www.youtube.com/watch?v=R3KeW4xHhx8)&#13;
 &gt; 这里的博主介绍得很详细，而且也不需要域名这样一些东西，很好的方法&#13;
 &#13;
@@ -435,4 +435,4 @@ $$ \frac{\partial u}{\partial t}=\frac{\partial^{2}u}{\partial x^{2}}+\sigma(x,t
 &#13;
 ## 也可使用 Notion 搭建个人网站&#13;
 [使用Notion搭建个人网页](https://www.youtube.com/watch?v=xIZBGREaFPU)&#13;
-这个加载比较慢，没有Github 加载速度快。</description><guid isPermaLink="true">https://EctorWang.github.io/post/zhi-shi-fen-xiang.html</guid><pubDate>Tue, 07 Jan 2025 14:10:21 +0000</pubDate></item></channel></rss>
+这个加载比较慢，没有Github 加载速度快。</description><guid isPermaLink="true">https://EctorWang.github.io/post/ge-ren-bo-ke-%20-%20-zhi-shi-fen-xiang.html</guid><pubDate>Tue, 07 Jan 2025 14:10:21 +0000</pubDate></item></channel></rss>
