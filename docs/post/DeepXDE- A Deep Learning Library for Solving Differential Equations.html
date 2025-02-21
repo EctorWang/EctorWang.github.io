@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 自适应细化方法RAR
+根据PDE残差大小自适应调整残差分布。">
+<meta property="og:title" content="DeepXDE: A Deep Learning Library for Solving Differential Equations">
+<meta property="og:description" content="## 自适应细化方法RAR
+根据PDE残差大小自适应调整残差分布。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://EctorWang.github.io/post/DeepXDE-%20A%20Deep%20Learning%20Library%20for%20Solving%20Differential%20Equations.html">
+<meta property="og:image" content="https://raw.githubusercontent.com/EctorWang/EctorWang.github.io/refs/heads/main/static/github_picture.png">
+<title>DeepXDE: A Deep Learning Library for Solving Differential Equations</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">DeepXDE: A Deep Learning Library for Solving Differential Equations</h1>
+<div class="title-right">
+    <a href="https://EctorWang.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/EctorWang/EctorWang.github.io/issues/23" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>自适应细化方法RAR</h2>
+<p>根据PDE残差大小自适应调整残差分布。解一些在梯度变化很大的区域增加采样点。并且相较于传统的随机分布，在处理复杂问题时效果更好。</p>
+<h3>文章优点分析</h3>
+<ol>
+<li><strong>内容全面系统</strong>：文章对基于深度学习求解微分方程的方法进行了全方位阐述。从理论基础如深度神经网络、自动微分，到核心算法物理信息神经网络（PINNs）的算法、近似理论、误差分析，再到实际应用中求解不同类型微分方程（如泊松方程、Burgers方程等）及反问题，还介绍了提升训练效率的RAR方法，内容丰富且逻辑连贯，为读者构建了完整知识体系。</li>
+<li><strong>理论实践结合</strong>：在深入探讨PINNs理论的同时，通过多个具体实例展示其实际应用效果。如在求解泊松方程、Burgers方程等问题时，对比PINNs与传统方法的结果，直观呈现PINNs的有效性；在反问题求解中，成功识别Lorenz系统和扩散 - 反应系统的参数，验证了该方法在复杂问题中的实用性，增强了理论的可信度和说服力。</li>
+<li><strong>突出工具价值</strong>：详细介绍了基于PINNs的Python库DeepXDE，涵盖其使用方法和可定制性。这不仅为科研人员提供了实用工具，降低了应用PINNs的门槛，促进该技术在计算科学和工程领域的应用，还方便教学，有助于学生理解和掌握相关知识，推动科学机器学习领域发展。</li>
+<li><strong>对比清晰直观</strong>：将PINNs与传统有限元方法（FEM）进行多方面对比，如基函数、训练点、PDE嵌入方式、参数求解器、误差等。通过对比，清晰展现PINNs的特点和优势，如无网格、非线性逼近等，帮助读者更好地理解PINNs的本质和适用场景。</li>
+</ol>
+<h3>出彩思路</h3>
+<p>文章中提出的基于残差的自适应细化（RAR）方法十分出彩。在训练PINNs时，该方法依据PDE残差大小自适应调整残差点分布。对于解具有陡峭梯度的PDE（如Burgers方程），在残差大的区域添加更多点，能有效捕捉解的特征，提升训练效率和求解精度。与传统固定残差点分布方式相比，RAR更具智能性和针对性，为解决复杂PDE问题提供了新途径，在处理高维、多尺度问题时优势明显，对拓展PINNs应用范围意义重大。</p>
+<h3>PINNs算法的优势</h3>
+<ol>
+<li><strong>广泛的适用性</strong>：能求解多种类型的微分方程，不仅局限于常见的偏微分方程，还包括积分微分方程、分数阶微分方程和随机微分方程等。这使得它在处理复杂物理问题时具有很大的灵活性，能够应对不同领域的数学模型求解需求。</li>
+<li><strong>逆问题求解的便捷性</strong>：在求解逆问题时，PINNs算法具有独特的优势。相比于传统方法，它无需对代码进行大幅修改，仅通过添加额外的损失项就能将逆问题转化为优化问题进行求解。这种方式极大地简化了逆问题的求解过程，提高了计算效率。</li>
+<li><strong>无网格特性</strong>：与传统的基于网格的数值方法（如有限差分法和有限元法）不同，PINNs算法采用自动微分技术，摆脱了对网格的依赖。它可以使用随机分布的点或网格点作为训练数据，避免了复杂的网格生成过程，降低了计算成本，同时也减少了因网格划分带来的误差，在处理高维问题时更具优势，打破了维度诅咒。</li>
+<li><strong>对噪声数据的鲁棒性</strong>：自动微分的特性使得PINNs算法在处理数据时，不会直接对数据进行求导，这使得它在面对含有噪声的数据时，具有更好的鲁棒性。即使训练数据存在一定程度的噪声干扰，PINNs算法仍能保持相对稳定的性能，得到较为可靠的结果。</li>
+<li><strong>强大的非线性逼近能力</strong>：PINNs算法利用神经网络作为函数逼近器，能够对复杂的非线性函数及其导数进行有效的逼近。相比传统的线性逼近方法（如有限元法中的分段线性逼近），PINNs算法在处理高度非线性的微分方程时，能够更好地捕捉函数的复杂特征，提供更精确的解。</li>
+<li><strong>独特的学习模式</strong>：在求解某些特定的偏微分方程（如泊松方程）时，PINNs算法展现出与传统函数逼近不同的学习模式。它能够几乎同时学习函数的不同频率成分，使得训练过程更加高效，在相同的计算资源和时间条件下，可能更快地收敛到更精确的解。</li>
+</ol>
+<h3>PINNs算法的不足</h3>
+<ol>
+<li><strong>解的唯一性无法保证</strong>：由于PINNs算法是通过求解非凸优化问题来获得方程的解，而这类优化问题通常不保证解的唯一性。在实际应用中，即使对于同一个问题，不同的初始条件或训练过程，都可能导致得到不同的解。因此，为了获得较为可靠的结果，往往需要多次随机初始化网络并进行训练，然后选择损失函数最小的解作为最终结果，这增加了计算成本和不确定性。</li>
+<li><strong>训练效率较低</strong>：在处理前向问题时，目前PINNs算法的训练速度通常比传统的有限元法慢。这是因为PINNs算法在训练过程中需要不断地计算神经网络的输出及其导数，以满足微分方程和边界条件的约束，这个过程涉及到大量的计算。特别是在处理大规模问题或高精度要求的问题时，训练时间可能会变得非常长，限制了其在实时性要求较高场景中的应用。</li>
+<li><strong>超参数依赖严重</strong>：PINNs算法的性能高度依赖于一系列超参数的选择，如神经网络的结构（层数、神经元数量）、学习率、训练数据点的数量和分布、损失函数中的权重等。这些超参数的设置没有通用的规则，往往需要根据具体问题进行反复调试和试验。不同的超参数设置可能会导致结果的巨大差异，这对于使用者来说，增加了算法应用的难度和复杂性。</li>
+<li><strong>缺乏有效的误差估计方法</strong>：虽然可以将PINNs算法的总误差分解为近似误差、泛化误差和优化误差，但目前还没有一种有效的方法来准确估计这些误差。在实际应用中，难以量化模型的误差范围，这使得使用者无法准确评估模型的可靠性和精度，不利于对计算结果进行合理的分析和判断。</li>
+<li><strong>网络架构选择困难</strong>：目前，选择合适的神经网络架构主要依赖于使用者的经验和试错。不同的问题可能需要不同的网络架构才能取得最佳效果，但缺乏系统的方法来指导网络架构的选择。新兴的元学习技术虽然为自动化搜索网络架构提供了可能，但尚未得到广泛应用和成熟发展，这在一定程度上限制了PINNs算法的推广和应用。</li>
+</ol></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://EctorWang.github.io">Ector Wang's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","EctorWang/EctorWang.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>
+
+</html>
