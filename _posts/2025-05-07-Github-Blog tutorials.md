@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Document - Writing Posts
+title: Github-Blog tutorials
 tags:
   - GitHub
 mathjax: true
