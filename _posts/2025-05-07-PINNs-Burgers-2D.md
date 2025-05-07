@@ -252,17 +252,21 @@ dt = 0.001   # 时间划分 元单元
 dx = 2 / (nx - 1)
 dy = 2 / (ny - 1)
 
+# 关于各个网格点 x y 的坐标
 x = np.linspace(0, 2, nx)
 y = np.linspace(0, 2, ny)
 
 comb = np.zeros((ny, nx))
 
+# 网格点处 X Y方向的位移 (nx, ny) 表示划分网格点，这里横向和纵向的位移，开始设置都是为0
 u = np.zeros((ny, nx))
 v = np.zeros((ny, nx))
 
+# un vn 表示的是网格点处的数值，后面的计算中会用到
 un = np.zeros((ny, nx))
 vn = np.zeros((ny, nx))
 
+# 这里的uf vf 表示的是整体的数据，即网格点和时间的结合的三维数据，单独的二维只是某一时刻的数据，这个就包括了整个动态的过程
 uf = np.zeros((nt, ny, nx))
 vf = np.zeros((nt, ny, nx))
 
@@ -272,14 +276,18 @@ v = np.ones((ny, nx))
 uf = np.ones((nt, ny, nx))
 vf = np.ones((nt, ny, nx))
 
+# 0.75 - 1.25 这里给的是在整体体系 [0, 2] 和 [0, 2] 之中坐标的范围，给了这个范围内的数据一个初值，这样方便后面的计算
 u[int(0.75 / dy):int(1.25 / dy + 1), int(0.75 / dy):int(1.25 / dy + 1)] = 5
 v[int(0.75 / dy):int(1.25 / dy + 1), int(0.75 / dy):int(1.25 / dy + 1)] = 5
 
+# 同样的边界条件，也通过 uf vf 的周期进行分析
 uf[0, int(0.75 / dy):int(1.25 / dy + 1), int(0.75 / dy):int(1.25 / dy + 1)] = 5
 vf[0, int(0.75 / dy):int(1.25 / dy + 1), int(0.75 / dy):int(1.25 / dy + 1)] = 5
 
+# 对整体的网格点进行了确定转化为tensor 给到了需要训练中的数据组
 X, Y = np.meshgrid(x, y)
 
+# 根据上面的数据，绘制等高线图 contourf
 plt.figure(figsize=(8, 6))
 contour = plt.contourf(X, Y, u[:], cmap='jet')
 plt.title("u solution")
@@ -299,8 +307,11 @@ colorbar.set_label("v scale")
 plt.show()
 
 for n in range(1, nt):
+	# 由于u v 是 numpy的数组，因此这里的 un vn 是深拷贝
+    # 如果是python 的普通数据的话，那么这里的 un vn 就是浅拷贝了
     un = u.copy()
     vn = v.copy()
+    # 对网格内的点进行更新
     for i in range(1, nx - 1):
         for j in range(1, ny - 1):
             u[i, j] = (un[i, j] - (un[i, j] * dt / dx * (un[i, j] - un[i - 1, j])) - vn[i, j] * dt / dy * (un[i, j] - un[i, j - 1])) + (nu * dt / (dx**2)) * (un[i + 1, j] - 2 * un[i, j] + un[i - 1, j]) + (nu * dt / (dx**2)) * (un[i, j - 1] - 2 * un[i, j] + un[i, j + 1])
@@ -351,3 +362,176 @@ colorbar.set_label("u scale")
 plt.show()
 ```
 
+
+
+
+
+
+## 关于代码中的差分公式的推导过程
+代码实现了 **二维 Burgers 方程** 的数值解法，分别计算水平速度$u$和垂直速度$v$的更新值。它基于离散化的偏微分方程，使用有限差分法（FDM）进行数值求解。
+
+---
+
+### **代码对应的方程**
+代码中的更新公式对应以下二维 Burgers 方程：
+
+1. **水平速度$u$的方程**：
+  $$
+   \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} = \nu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+  $$
+
+2. **垂直速度$v$的方程**：
+  $$
+   \frac{\partial v}{\partial t} + u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} = \nu \left( \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} \right)
+  $$
+
+---
+
+### **代码解读**
+代码中，使用有限差分法对上述方程进行离散化。以下是详细的解读：
+
+#### **1. 时间导数项**
+时间导数$\frac{\partial u}{\partial t}$和$\frac{\partial v}{\partial t}$被离散化为：
+$$
+\frac{\partial u}{\partial t} \approx \frac{u^{n+1}_{i,j} - u^n_{i,j}}{\Delta t}
+$$
+$$
+\frac{\partial v}{\partial t} \approx \frac{v^{n+1}_{i,j} - v^n_{i,j}}{\Delta t}
+$$
+其中：
+-$u^{n+1}_{i,j}$和$v^{n+1}_{i,j}$是下一时间步的值。
+-$u^n_{i,j}$和$v^n_{i,j}$是当前时间步的值。
+
+在代码中，时间导数的更新隐含在公式中，直接通过$u[i, j]$和$v[i, j]$的赋值完成。
+
+---
+
+#### **2. 对流项**
+对流项$u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y}$和$u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y}$被离散化为：
+$$
+u \frac{\partial u}{\partial x} \approx u_{i,j} \frac{u_{i,j} - u_{i-1,j}}{\Delta x}
+$$
+$$
+v \frac{\partial u}{\partial y} \approx v_{i,j} \frac{u_{i,j} - u_{i,j-1}}{\Delta y}
+$$
+$$
+u \frac{\partial v}{\partial x} \approx u_{i,j} \frac{v_{i,j} - v_{i-1,j}}{\Delta x}
+$$
+$$
+v \frac{\partial v}{\partial y} \approx v_{i,j} \frac{v_{i,j} - v_{i,j-1}}{\Delta y}
+$$
+
+在代码中，这些项分别对应：
+```python
+-(un[i, j] * dt / dx * (un[i, j] - un[i-1, j]))
+-(vn[i, j] * dt / dy * (un[i, j] - un[i, j-1]))
+```
+和：
+```python
+-(un[i, j] * dt / dx * (vn[i, j] - vn[i-1, j]))
+-(vn[i, j] * dt / dy * (vn[i, j] - vn[i, j-1]))
+```
+
+---
+
+#### **3. 粘性扩散项**
+粘性扩散项$\nu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)$和$\nu \left( \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} \right)$被离散化为：
+$$
+\frac{\partial^2 u}{\partial x^2} \approx \frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{\Delta x^2}
+$$
+$$
+\frac{\partial^2 u}{\partial y^2} \approx \frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{\Delta y^2}
+$$
+$$
+\frac{\partial^2 v}{\partial x^2} \approx \frac{v_{i+1,j} - 2v_{i,j} + v_{i-1,j}}{\Delta x^2}
+$$
+$$
+\frac{\partial^2 v}{\partial y^2} \approx \frac{v_{i,j+1} - 2v_{i,j} + v_{i,j-1}}{\Delta y^2}
+$$
+
+在代码中，这些项分别对应：
+```python
+(nu * dt / (dx**2)) * (un[i+1, j] - 2 * un[i, j] + un[i-1, j])
+(nu * dt / (dx**2)) * (un[i, j-1] - 2 * un[i, j] + un[i, j+1])
+```
+和：
+```python
+(nu * dt / (dx**2)) * (vn[i+1, j] - 2 * vn[i, j] + vn[i-1, j])
+(nu * dt / (dx**2)) * (vn[i, j-1] - 2 * vn[i, j] + vn[i, j+1])
+```
+
+---
+
+#### **4. 更新公式**
+综合以上离散化，水平速度$u$和垂直速度$v$的更新公式为：
+$$
+u^{n+1}_{i,j} = u^n_{i,j} - u^n_{i,j} \frac{\Delta t}{\Delta x} (u^n_{i,j} - u^n_{i-1,j}) - v^n_{i,j} \frac{\Delta t}{\Delta y} (u^n_{i,j} - u^n_{i,j-1}) + \nu \frac{\Delta t}{\Delta x^2} (u^n_{i+1,j} - 2u^n_{i,j} + u^n_{i-1,j}) + \nu \frac{\Delta t}{\Delta y^2} (u^n_{i,j+1} - 2u^n_{i,j} + u^n_{i,j-1})
+$$
+$$
+v^{n+1}_{i,j} = v^n_{i,j} - u^n_{i,j} \frac{\Delta t}{\Delta x} (v^n_{i,j} - v^n_{i-1,j}) - v^n_{i,j} \frac{\Delta t}{\Delta y} (v^n_{i,j} - v^n_{i,j-1}) + \nu \frac{\Delta t}{\Delta x^2} (v^n_{i+1,j} - 2v^n_{i,j} + v^n_{i-1,j}) + \nu \frac{\Delta t}{\Delta y^2} (v^n_{i,j+1} - 2v^n_{i,j} + v^n_{i,j-1})
+$$
+
+---
+
+### **代码逻辑总结**
+1. **对流项**：描述流体的速度变化，依赖于当前速度$u$和$v$。
+2. **扩散项**：描述流体的粘性扩散效应，依赖于粘性系数$\nu$。
+3. **时间步更新**：通过有限差分法，逐步更新$u$和$v$的值。
+
+这段代码实现了二维 Burgers 方程的数值解法，模拟了流体在二维空间中的速度场演化过程。
+
+
+## 公式总结
+
+  $$
+   \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} = \nu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+  $$
+
+时间导数$\frac{\partial u}{\partial t}$被离散化为：
+$$
+\frac{\partial u}{\partial t} \approx \frac{u^{n+1}_{i,j} - u^n_{i,j}}{\Delta t}
+$$
+
+对流项$u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y}$被离散化为：
+$$
+u \frac{\partial u}{\partial x} \approx u_{i,j} \frac{u_{i,j} - u_{i-1,j}}{\Delta x}
+$$
+$$
+v \frac{\partial u}{\partial y} \approx v_{i,j} \frac{u_{i,j} - u_{i,j-1}}{\Delta y}
+$$
+在代码中，这些项分别对应：
+```python
+-(un[i, j] * dt / dx * (un[i, j] - un[i-1, j]))
+-(vn[i, j] * dt / dy * (un[i, j] - un[i, j-1]))
+```
+
+粘性扩散项$\nu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)$被离散化为：
+$$
+\frac{\partial^2 u}{\partial x^2} \approx \frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{\Delta x^2}
+$$
+$$
+\frac{\partial^2 u}{\partial y^2} \approx \frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{\Delta y^2}
+$$
+
+在代码中，这些项分别对应：
+```python
+(nu * dt / (dx**2)) * (un[i+1, j] - 2 * un[i, j] + un[i-1, j])
+(nu * dt / (dx**2)) * (un[i, j-1] - 2 * un[i, j] + un[i, j+1])
+```
+
+$$
+\frac{u^{n+1}_{i,j} - u^n_{i,j}}{\Delta t} + u_{i,j} \frac{u_{i,j} - u_{i-1,j}}{\Delta x} + v_{i,j} \frac{u_{i,j} - u_{i,j-1}}{\Delta y} = \nu (\frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{\Delta x^2} + \frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{\Delta y^2})
+$$
+
+公式按等号两边分行显示的结果：
+
+$$
+\frac{u^{n+1}_{i,j} - u^n_{i,j}}{\Delta t} + u_{i,j} \frac{u_{i,j} - u_{i-1,j}}{\Delta x} + v_{i,j} \frac{u_{i,j} - u_{i,j-1}}{\Delta y} \\ = \nu \left( \frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{\Delta x^2} + \frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{\Delta y^2} \right)
+$$
+
+$$
+u_{i,j}^{n+1}-u_{i,j}^n+\Delta t\left(u_{i,j}\frac{u_{i,j}-u_{i-1,j}}{\Delta x}+v_{i,j}\frac{u_{i,j}-u_{i,j-1}}{\Delta y}\right)\\
+$$
+$$
+=\Delta t\nu\left(\frac{u_{i+1,j}-2u_{i,j}+u_{i-1,j}}{\Delta x^2}+\frac{u_{i,j+1}-2u_{i,j}+u_{i,j-1}}{\Delta y^2}\right)
+$$
