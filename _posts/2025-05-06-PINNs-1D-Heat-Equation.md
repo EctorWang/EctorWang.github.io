@@ -6,9 +6,9 @@ tags:
 mathjax: true
 ---
 > [!info] 文件创建时间
-> 2025-05-07,15:38
+> 2025-05-06,15:38
 
-## 一维热传导方程
+## 一维热传导方程代码
 
 ```python
 import numpy
@@ -209,3 +209,67 @@ pyplot.ylabel("temp")
 pyplot.xlabel("x")
 pyplot.show()
 ```
+
+
+## 一维热传导方程的推导简要介绍
+### 一、一维热传导方程介绍
+
+一维热传导方程是描述热量在一维物体（如细长杆）中传递规律的数学方程 。通过它可了解物体内部温度分布，以及温度随时间和空间的变化情况。在工程和科学领域，如材料热性能分析、设备散热设计等方面有广泛应用 。其偏微分方程形式为：
+$$
+\frac{\partial u}{\partial t} = k\frac{\partial^{2}u}{\partial x^{2}}
+$$
+其中，$u = u(x, t)$表示温度，是关于空间坐标$x$和时间$t$的函数 ；$k$为热扩散率（也叫热扩散系数） 。热扩散率$k = \frac{\lambda}{\rho c_p}$ ，这里$\lambda$是导热系数（反映材料传导热量的能力，单位$W/(mÂ·K)$ ），$\rho$是材料密度（单位$kg/m^3$ ），$c_p$是比热容（单位质量物质温度升高$1K$所需热量，单位$J/(kgÂ·K)$ ） 。
+
+### 二、方程推导过程
+
+1. **基本假设**
+
+- 考虑一根均匀的一维物体（如金属棒），其横截面积$A$恒定不变 。
+
+- 物体的热传导系数$\lambda$已知且保持恒定 。
+
+- 只考虑沿物体长度方向$x$方向）的热传导，忽略其他方向（如径向等）的热传导 。
+
+2. **涉及的物理定律和概念**
+
+- **能量守恒定律**：在一个封闭系统中，能量不会凭空产生或消失，只会从一种形式转化为另一种形式。在热传导情境下，流入某部分物体的热量减去流出的热量，等于该部分物体热存储（即温度变化引起的内能变化） 。
+
+- **热流量（热流密度）**：单位时间内通过单位面积的热量，用$q$表示 ，根据傅里叶定律，$q = -\lambda\frac{\partial u}{\partial x}$ 。负号表示热量总是从高温区域流向低温区域，$rac{\partial u}{\partial x}$是温度关于位置 $x$ 的梯度 。
+$
+1. **推导步骤**
+
+- 取物体中一个微小的长度元$\Delta x$，在微小时间间隔$\Delta t$内，分析该微元段的能量变化 。
+
+- **流入与流出热量**：
+
+- 从左侧（$x$处）流入微元段的热流量为$q(x,t)A\Delta t$ ，由傅里叶定律$q(x,t)=-\lambda\frac{\partial u(x,t)}{\partial x}$，所以流入热量$Q_{in}=-\lambda A\Delta t\frac{\partial u(x,t)}{\partial x}$ 。
+
+- 从右侧（$x + \Delta x$处）流出微元段的热流量为$q(x + \Delta x,t)A\Delta t$ ，即$Q_{out}=-\lambda A\Delta t\frac{\partial u(x + \Delta x,t)}{\partial x}$ 。
+
+- **微元段热存储变化**：微元段的质量$m=\rho A\Delta x$ ，根据比热容定义，温度变化$\Delta u$时，内能变化（热存储变化）$\Delta Q = m c_p\Delta u=\rho A\Delta x c_p\frac{\partial u}{\partial t}\Delta t$ 。
+
+- **根据能量守恒定律建立等式**：
+
+流入热量减去流出热量等于微元段热存储变化，即$Q_{in}-Q_{out}=\Delta Q$ 。
+
+$$
+-\lambda A\Delta t\frac{\partial u(x,t)}{\partial x}-\left(-\lambda A\Delta t\frac{\partial u(x + \Delta x,t)}{\partial x}\right)=\rho A\Delta x c_p\frac{\partial u}{\partial t}\Delta t)
+$$
+
+- **化简等式**：
+
+两边同时除以$A\Delta x\Delta t$ ，得到
+
+$$
+\frac{\lambda}{\rho c_p}\frac{\frac{\partial u(x + \Delta x,t)}{\partial x}-\frac{\partial u(x,t)}{\partial x}}{\Delta x}=\frac{\partial u}{\partial t}
+$$
+
+
+当$\Delta x \to 0$时，根据导数定义，
+$$
+\frac{\frac{\partial u(x + \Delta x,t)}{\partial x}-\frac{\partial u(x,t)}{\partial x}}{\Delta x}=\frac{\partial^{2}u}{\partial x^{2}}
+$$
+，令$k = \frac{\lambda}{\rho c_p}$（热扩散率），就得到一维热传导方程：
+
+$$\frac{\partial u}{\partial t} = k\frac{\partial^{2}u}{\partial x^{2}}$$
+
