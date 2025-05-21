@@ -319,17 +319,21 @@ for n in range(1, nt):
             uf[n, i, j] = u[i, j]
             vf[n, i, j] = v[i, j]
 
-    u[:, 0] = 1
-    u[:, -1] = 1
-    u[0, :] = 1
-    u[-1, :] = 1
+    # 下面是给定的边界条件
+    u[:, 0] = 1   # 上边界条件
+    u[:, -1] = 1   # 下边界条件
+    u[0, :] = 1   # 左边界条件
+    u[-1, :] = 1   # 右边界条件
+    # 下面的也是同上面的一样
     v[:, 0] = 1
     v[:, -1] = 1
     v[0, :] = 1
     v[-1, :] = 1
 
+# 网格点划分
 X, Y = np.meshgrid(x, y)
 
+# 绘制 u 图形 - X方向
 plt.figure(figsize=(8, 6))
 contour = plt.contourf(X, Y, u[:], cmap='jet')
 plt.title("u solution")
@@ -339,7 +343,7 @@ colorbar = plt.colorbar(contour)
 colorbar.set_label("u scale")
 
 X, Y = np.meshgrid(x, y)
-
+# 绘制 v 图形 - Y方向
 plt.figure(figsize=(8, 6))
 contour = plt.contourf(X, Y, v[:], cmap='jet')
 plt.title("v solution")
@@ -349,7 +353,7 @@ colorbar = plt.colorbar(contour)
 plt.show()
 
 X, Y = np.meshgrid(x, y)
-
+# 绘制 特定时间处的 u 图形 - X方向
 u = uf[499, :, :]
 
 plt.figure(figsize=(8, 6))
